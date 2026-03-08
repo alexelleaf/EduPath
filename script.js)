@@ -1,0 +1,197 @@
+/* =============================================================================
+LEARNHUB — EDUCATIONAL PLATFORM LOGIC
+============================================================================= */
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('■ LearnHub Ready ■');
+
+    /* ---------------------------------------------------------------------
+       THEME TOGGLE
+       --------------------------------------------------------------------- */
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('.theme-icon');
+    const themeText = themeToggle.querySelector('.theme-text');
+    const body = document.body;
+
+    // Load saved theme or default to light
+    const savedTheme = localStorage.getItem('learnhub-theme') || 'light';
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-theme');
+        themeIcon.textContent = '☀️';
+        themeText.textContent = 'Светлая';
+    }
+
+    themeToggle.addEventListener('click', function() {
+        if (body.classList.contains('light-theme')) {
+            body.classList.remove('light-theme');
+            body.classList.add('dark-theme');
+            themeIcon.textContent = '☀️';
+            themeText.textContent = 'Светлая';
+            localStorage.setItem('learnhub-theme', 'dark');
+        } else {
+            body.classList.remove('dark-theme');
+            body.classList.add('light-theme');
+            themeIcon.textContent = '🌙';
+            themeText.textContent = 'Тёмная';
+            localStorage.setItem('learnhub-theme', 'light');
+        }
+    });
+
+    /* ---------------------------------------------------------------------
+       FLASHCARDS FLIP FUNCTIONALITY
+       --------------------------------------------------------------------- */
+    const flashcards = document.querySelectorAll('.flashcard');
+
+    flashcards.forEach(function(card) {
+        card.addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
+    });
+
+    /* ---------------------------------------------------------------------
+       ASSIGNMENT CHECK FUNCTIONALITY
+       --------------------------------------------------------------------- */
+    const checkButtons = document.querySelectorAll('.check-btn');
+
+    checkButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const input = this.previousElementSibling;
+            const userAnswer = input.value.trim().toLowerCase();
+            const correctAnswer = this.dataset.answer.toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                input.classList.add('correct');
+                input.classList.remove('incorrect');
+                this.classList.add('checked-correct');
+                this.classList.remove('checked-incorrect');
+                this.textContent = '✓';
+                showFeedback(true, 'Правильно! Молодец! 🎉');
+            } else {
+                input.classList.add('incorrect');
+                input.classList.remove('correct');
+                this.classList.add('checked-incorrect');
+                this.classList.remove('checked-correct');
+                this.textContent = '✗';
+                showFeedback(false, 'Попробуй ещё раз. Правильный ответ: ' + this.dataset.answer);
+            }
+        });
+    });
+
+    /* ---------------------------------------------------------------------
+       MULTIPLE CHOICE FUNCTIONALITY
+       --------------------------------------------------------------------- */
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+    radioButtons.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            const parent = this.closest('.assignment-item');
+            const feedback = parent.querySelector('.assignment-feedback');
+
+            if (this.value === 'correct') {
+                showFeedbackInParent(parent, true, 'Верно! Отличная работа! ✓');
+            } else {
+                showFeedbackInParent(parent, false, 'Неправильно. Попробуй ещё раз.');
+            }
+        });
+    });
+
+    /* ---------------------------------------------------------------------
+       FEEDBACK HELPER FUNCTIONS
+       --------------------------------------------------------------------- */
+    function showFeedback(isSuccess, message) {
+        // Remove existing feedback
+        const existing = document.querySelector('.assignment-feedback');
+        if (existing) {
+            existing.remove();
+        }
+
+        // Create new feedback
+        const feedback = document.createElement('div');
+        feedback.className = 'assignment-feedback ' + (isSuccess ? 'success' : 'error');
+        feedback.style.display = 'flex';
+        feedback.innerHTML = `
+            <span class="feedback-icon">${isSuccess ? '✓' : '✗'}</span>
+            <span class="feedback-text">${message}</span>
+        `;
+
+        // Insert after the last assignment-item
+        const lastItem = document.querySelector('.assignment-item:last-child');
+        if (lastItem) {
+            lastItem.parentNode.insertBefore(feedback, lastItem.nextSibling);
+        }
+
+        // Auto-hide after 5 seconds
+        setTimeout(function() {
+            feedback.style.opacity = '0';
+            feedback.style.transition = 'opacity 0.3s ease';
+            setTimeout(function() {
+                feedback.remove();
+            }, 300);
+        }, 5000);
+    }
+
+    function showFeedbackInParent(parent, isSuccess, message) {
+        let feedback = parent.querySelector('.assignment-feedback');
+
+        if (!feedback) {
+            feedback = document.createElement('div');
+            feedback.className = 'assignment-feedback';
+            parent.appendChild(feedback);
+        }
+
+        feedback.className = 'assignment-feedback ' + (isSuccess ? 'success' : 'error');
+        feedback.style.display = 'flex';
+        feedback.innerHTML = `
+            <span class="feedback-icon">${isSuccess ? '✓' : '✗'}</span>
+            <span class="feedback-text">${message}</span>
+        `;
+    }
+
+    /* ---------------------------------------------------------------------
+       PROGRESS TRACKING (Optional Enhancement)
+       --------------------------------------------------------------------- */
+    // Track completed flashcards
+    flashcards.forEach(function(card) {
+        card.addEventListener('click', function() {
+            if (this.classList.contains('flipped')) {
+                this.style.opacity = '0.7';
+                // Could save progress to localStorage here
+            }
+        });
+    });
+
+    /* ---------------------------------------------------------------------
+       SMOOTH SCROLL FOR ANCHORS
+       --------------------------------------------------------------------- */
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const target = document.querySelector(targetId);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    /* ---------------------------------------------------------------------
+       KEYBOARD ACCESSIBILITY FOR FLASHCARDS
+       --------------------------------------------------------------------- */
+    flashcards.forEach(function(card) {
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', 'Флеш-карточка. Нажмите для переворота');
+
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.classList.toggle('flipped');
+            }
+        });
+    });
+});

@@ -8,7 +8,10 @@
 </head>
 <body>
     <header>
-        <h1>EduPath</h1>
+        <div class="header-content">
+            <h1>EDUPATH</h1>
+            <button class="donate-btn" onclick="showDonateModal()">☕ Поддержать проект</button>
+        </div>
     </header>
 
     <nav class="nav-container">
@@ -54,57 +57,63 @@
 
     <main class="main-content">
         <h2 class="section-title">Флеш-карточки</h2>
-        <div class="blocks-container">
-            <div class="flashcards-grid">
-                <div class="flashcard" onclick="flipCard(this)">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">
-                            <span>To learn</span>
-                            <span class="flashcard-hint">Нажмите для перевода</span>
-                        </div>
-                        <div class="flashcard-back">
-                            <span>Учить, изучать</span>
-                            <span class="flashcard-hint">Нажмите обратно</span>
-                        </div>
+        <div class="blocks-container grid-3">
+            <div class="flashcard" onclick="turnPage(this)">
+                <div class="flashcard-page front">
+                    <div class="page-content">
+                        <span class="card-word">To learn</span>
+                        <span class="card-hint">→</span>
                     </div>
                 </div>
-
-                <div class="flashcard" onclick="flipCard(this)">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">
-                            <span>Knowledge</span>
-                            <span class="flashcard-hint">Нажмите для перевода</span>
-                        </div>
-                        <div class="flashcard-back">
-                            <span>Знание</span>
-                            <span class="flashcard-hint">Нажмите обратно</span>
-                        </div>
+                <div class="flashcard-page back">
+                    <div class="page-content">
+                        <span class="card-word">Учить, изучать</span>
+                        <span class="card-hint">←</span>
                     </div>
                 </div>
+            </div>
 
-                <div class="flashcard" onclick="flipCard(this)">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">
-                            <span>To practice</span>
-                            <span class="flashcard-hint">Нажмите для перевода</span>
-                        </div>
-                        <div class="flashcard-back">
-                            <span>Практиковать</span>
-                            <span class="flashcard-hint">Нажмите обратно</span>
-                        </div>
+            <div class="flashcard" onclick="turnPage(this)">
+                <div class="flashcard-page front">
+                    <div class="page-content">
+                        <span class="card-word">Knowledge</span>
+                        <span class="card-hint">→</span>
                     </div>
                 </div>
+                <div class="flashcard-page back">
+                    <div class="page-content">
+                        <span class="card-word">Знание</span>
+                        <span class="card-hint">←</span>
+                    </div>
+                </div>
+            </div>
 
-                <div class="flashcard" onclick="flipCard(this)">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">
-                            <span>Grammar</span>
-                            <span class="flashcard-hint">Нажмите для перевода</span>
-                        </div>
-                        <div class="flashcard-back">
-                            <span>Грамматика</span>
-                            <span class="flashcard-hint">Нажмите обратно</span>
-                        </div>
+            <div class="flashcard" onclick="turnPage(this)">
+                <div class="flashcard-page front">
+                    <div class="page-content">
+                        <span class="card-word">To practice</span>
+                        <span class="card-hint">→</span>
+                    </div>
+                </div>
+                <div class="flashcard-page back">
+                    <div class="page-content">
+                        <span class="card-word">Практиковать</span>
+                        <span class="card-hint">←</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flashcard" onclick="turnPage(this)">
+                <div class="flashcard-page front">
+                    <div class="page-content">
+                        <span class="card-word">Grammar</span>
+                        <span class="card-hint">→</span>
+                    </div>
+                </div>
+                <div class="flashcard-page back">
+                    <div class="page-content">
+                        <span class="card-word">Грамматика</span>
+                        <span class="card-hint">←</span>
                     </div>
                 </div>
             </div>
@@ -112,7 +121,7 @@
 
         <h2 class="section-title">Упражнения</h2>
         
-        <div class="blocks-container">
+        <div class="blocks-container grid-1">
             <div class="exercise-block">
                 <h3 class="exercise-title">Раскройте скобки, используя Present Perfect:</h3>
                 
@@ -120,8 +129,8 @@
                     <div class="exercise-question">1. She _____ (finish) her homework already.</div>
                     <div class="input-exercise">
                         <button class="check-btn" onclick="checkTextAnswer(this, ['has finished'])">✓</button>
-                        <input type="text" class="answer-input" placeholder="Введите ваш ответ">
-                        <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Показать правильный ответ</button>
+                        <input type="text" class="answer-input" placeholder="Введите ответ">
+                        <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Показать ответ</button>
                     </div>
                     <div class="correct-answer">Правильный ответ: has finished</div>
                 </div>
@@ -130,8 +139,8 @@
                     <div class="exercise-question">2. They _____ (visit) London three times.</div>
                     <div class="input-exercise">
                         <button class="check-btn" onclick="checkTextAnswer(this, ['have visited'])">✓</button>
-                        <input type="text" class="answer-input" placeholder="Введите ваш ответ">
-                        <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Показать правильный ответ</button>
+                        <input type="text" class="answer-input" placeholder="Введите ответ">
+                        <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Показать ответ</button>
                     </div>
                     <div class="correct-answer">Правильный ответ: have visited</div>
                 </div>
@@ -140,8 +149,8 @@
                     <div class="exercise-question">3. I _____ (never/see) such a beautiful sunset.</div>
                     <div class="input-exercise">
                         <button class="check-btn" onclick="checkTextAnswer(this, ['have never seen', 've never seen'])">✓</button>
-                        <input type="text" class="answer-input" placeholder="Введите ваш ответ">
-                        <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Показать правильный ответ</button>
+                        <input type="text" class="answer-input" placeholder="Введите ответ">
+                        <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Показать ответ</button>
                     </div>
                     <div class="correct-answer">Правильный ответ: have never seen</div>
                 </div>
@@ -157,7 +166,7 @@
                         <div class="choice-option" onclick="selectOption(this)" data-correct="true">B) I have gone to Paris</div>
                         <div class="choice-option" onclick="selectOption(this)" data-correct="false">C) I have go to Paris</div>
                     </div>
-                    <button class="validate-btn" onclick="validateMultipleChoice(this)">Проверить ответ</button>
+                    <button class="validate-btn" onclick="validateMultipleChoice(this)">Проверить</button>
                 </div>
 
                 <div class="exercise-item">
@@ -167,44 +176,49 @@
                         <div class="choice-option" onclick="selectOption(this)" data-correct="false">B) She has live here for 5 years</div>
                         <div class="choice-option" onclick="selectOption(this)" data-correct="false">C) She have lived here for 5 years</div>
                     </div>
-                    <button class="validate-btn" onclick="validateMultipleChoice(this)">Проверить ответ</button>
-                </div>
-
-                <div class="exercise-item">
-                    <div class="exercise-question">3. Select the right variant:</div>
-                    <div class="multiple-choice-options">
-                        <div class="choice-option" onclick="selectOption(this)" data-correct="false">A) Did you ever tried sushi?</div>
-                        <div class="choice-option" onclick="selectOption(this)" data-correct="false">B) Have you ever tried sushi?</div>
-                        <div class="choice-option" onclick="selectOption(this)" data-correct="true">C) Have you ever try sushi?</div>
-                    </div>
-                    <button class="validate-btn" onclick="validateMultipleChoice(this)">Проверить ответ</button>
+                    <button class="validate-btn" onclick="validateMultipleChoice(this)">Проверить</button>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-title">Материалы для изучения</h2>
-        <div class="blocks-container">
-            <div class="content-block sketch-border">
+        <h2 class="section-title">Материалы</h2>
+        <div class="blocks-container grid-2">
+            <div class="content-block">
                 <h3>Правила языка</h3>
-                <p>Подробное объяснение грамматических правил с примерами использования. Включает временные формы, артикли, предлоги и другие аспекты.</p>
+                <p>Подробное объяснение грамматических правил с примерами использования. Включает временные формы, артикли, предлоги.</p>
             </div>
 
-            <div class="content-block sketch-border">
+            <div class="content-block">
                 <h3>Лексические темы</h3>
-                <p>Словарный запас по различным темам: повседневная жизнь, путешествия, работа, образование и многое другое.</p>
+                <p>Словарный запас по различным темам: повседневная жизнь, путешествия, работа, образование.</p>
             </div>
 
-            <div class="content-block sketch-border">
+            <div class="content-block">
                 <h3>Практические задания</h3>
                 <p>Упражнения для закрепления материала: переводы, тесты, аудирование и письменные задания.</p>
             </div>
 
-            <div class="content-block sketch-border">
+            <div class="content-block">
                 <h3>Дополнительные ресурсы</h3>
                 <p>Ссылки на полезные материалы, видеоуроки, подкасты и интерактивные упражнения.</p>
             </div>
         </div>
     </main>
+
+    <div id="donateModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDonateModal()">&times;</span>
+            <h2>Поддержать проект</h2>
+            <p>Если материалы помогают вам в обучении, вы можете поддержать развитие проекта:</p>
+            <div class="donate-options">
+                <button class="donate-option" onclick="selectDonate(100)">100 ₽</button>
+                <button class="donate-option" onclick="selectDonate(300)">300 ₽</button>
+                <button class="donate-option" onclick="selectDonate(500)">500 ₽</button>
+                <button class="donate-option" onclick="selectDonate(1000)">1000 ₽</button>
+            </div>
+            <p class="donate-note">Спасибо за вашу поддержку!</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

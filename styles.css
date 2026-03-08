@@ -93,9 +93,12 @@ body::before {
 }
 
 .logo h1 {
-    font-size: 1.40rem;        /* ≈ 20px при базовом 16px */
-    font-weight: 700;          /* Жирное начертание */
-    letter-spacing: -0.5px;    /* Плотный межбуквенный интервал */
+    font-size: 1.40rem;
+    /* ≈ 20px при базовом 16px */
+    font-weight: 700;
+    /* Жирное начертание */
+    letter-spacing: -0.5px;
+    /* Плотный межбуквенный интервал */
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -121,21 +124,30 @@ body::before {
 }
 
 .donate-btn {
-    display: inline-flex;           /* Размер по содержимому */
-    align-items: center;            /* Центрирование по вертикали */
-    justify-content: center;        /* Центрирование по горизонтали */
-    gap: 0.4rem;                    /* Отступ между иконкой и текстом */
+    display: inline-flex;
+    /* Размер по содержимому */
+    align-items: center;
+    /* Центрирование по вертикали */
+    justify-content: center;
+    /* Центрирование по горизонтали */
+    gap: 0.4rem;
+    /* Отступ между иконкой и текстом */
     background: var(--accent-gradient);
     color: white;
     border: none;
-    padding: 0.6rem 0.85rem;        /* Внутренние отступы (верх/низ, лево/право) */
-    border-radius: var(--radius-md);/* Закругление углов (12px) */
-    font-weight: 600;               /* Жирность шрифта */
-    font-size: 1rem;                /* Размер шрифта текста */
+    padding: 0.6rem 0.85rem;
+    /* Внутренние отступы (верх/низ, лево/право) */
+    border-radius: var(--radius-md);
+    /* Закругление углов (12px) */
+    font-weight: 600;
+    /* Жирность шрифта */
+    font-size: 1rem;
+    /* Размер шрифта текста */
     cursor: pointer;
     transition: all var(--transition-base);
     box-shadow: var(--shadow-md);
-    white-space: nowrap;            /* Запрет переноса текста */
+    white-space: nowrap;
+    /* Запрет переноса текста */
 }
 
 .donate-btn:hover {
@@ -152,7 +164,8 @@ body::before {
     max-width: 1400px;
     margin: 0 auto;
     padding: 1.5rem;
-    padding-top: 6.5rem; /* Добавлен отступ сверху равный высоте шапки */
+    padding-top: 6.5rem;
+    /* Добавлен отступ сверху равный высоте шапки */
     overflow-x: hidden;
 }
 
@@ -1103,7 +1116,8 @@ body::before {
 
     .main-content {
         padding: 1rem;
-        padding-top: 6rem; /* Добавлен отступ сверху равный высоте шапки */
+        padding-top: 6rem;
+        /* Добавлен отступ сверху равный высоте шапки */
     }
 
     .flashcards-grid {
@@ -1151,7 +1165,9 @@ body::before {
     }
 
     .donate-options {
-        grid-template-columns: repeat(2, 1fr); /* 2 кнопки в ряд */
-        gap: 0.75rem; /* Уменьшенный отступ для мобильных */
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 кнопки в ряд */
+        gap: 0.75rem;
+        /* Уменьшенный отступ для мобильных */
     }
 }

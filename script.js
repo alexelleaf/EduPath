@@ -180,9 +180,27 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe all blocks
-document.querySelectorAll('.content-block, .examples-block, .flashcard, .mini-flashcard, .inline-flashcard-right').forEach(el => {
+document.querySelectorAll('.content-block, .examples-block').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
+});
+
+
+// Header Hide/Show on Scroll
+let lastScrollY = window.scrollY;
+const header = document.querySelector('.header');
+
+window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    
+    // Скрываем при прокрутке вниз, показываем при прокрутке вверх
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        header.classList.add('hidden');
+    } else {
+        header.classList.remove('hidden');
+    }
+    
+    lastScrollY = currentScrollY;
 });

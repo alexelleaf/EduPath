@@ -3,307 +3,670 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detective Academy | Обучение</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>EduPath - Образовательная платформа</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-blue: #1e3a5f;
+            --medium-blue: #2d4a6f;
+            --light-blue: #3a5a7f;
+            --white: #ffffff;
+            --black: #1a1a1a;
+            --gray: #e0e0e0;
+            --success: #2d7a3e;
+            --error: #b93b3b;
+            --border-color: #2d4a6f;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-blue);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--black);
+            border-bottom: 3px solid var(--medium-blue);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation Tree */
+        .nav-container {
+            background-color: var(--medium-blue);
+            padding: 2rem;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .tree-nav {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tree-nav ul {
+            list-style: none;
+            padding-left: 2rem;
+            border-left: 2px solid var(--light-blue);
+            margin-left: 0.5rem;
+        }
+
+        .tree-nav li {
+            margin: 0.75rem 0;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .tree-nav li::before {
+            content: "└──";
+            position: absolute;
+            left: -1.5rem;
+            color: var(--gray);
+            font-weight: bold;
+        }
+
+        .tree-nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: inline-block;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tree-nav a:hover {
+            border: 1px solid var(--white);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin: 2rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--medium-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Flexible Blocks Container */
+        .blocks-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            width: 100%;
+            margin: 1.5rem 0;
+        }
+
+        .content-block {
+            flex: 1 1 300px;
+            min-width: 280px;
+            background-color: var(--medium-blue);
+            border: 2px solid var(--border-color);
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-block:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-block h3 {
+            margin-bottom: 1rem;
+            color: var(--white);
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Flash Cards */
+        .flashcards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .flashcard {
+            flex: 1 1 250px;
+            min-width: 220px;
+            height: 200px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front,
+        .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            border: 2px solid var(--border-color);
+            background-color: var(--medium-blue);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .flashcard-back {
+            transform: rotateY(180deg);
+            background-color: var(--light-blue);
+        }
+
+        .flashcard-hint {
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--gray);
+            opacity: 0.7;
+        }
+
+        /* Exercises */
+        .exercise-block {
+            flex: 1 1 100%;
+            background-color: var(--medium-blue);
+            border: 2px solid var(--border-color);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .exercise-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .exercise-item {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: rgba(30, 58, 95, 0.5);
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        .exercise-question {
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        /* Text Input Exercises */
+        .input-exercise {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .check-btn {
+            background-color: var(--success);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            flex-shrink: 0;
+        }
+
+        .check-btn:hover {
+            background-color: #3d9a4e;
+        }
+
+        .answer-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            background-color: var(--dark-blue);
+            color: var(--white);
+            font-size: 1rem;
+            border-radius: 4px;
+        }
+
+        .answer-input.correct {
+            border-color: var(--success);
+            background-color: rgba(45, 122, 62, 0.2);
+        }
+
+        .answer-input.incorrect {
+            border-color: var(--error);
+            background-color: rgba(185, 59, 59, 0.2);
+        }
+
+        .show-answer-btn {
+            background-color: var(--light-blue);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 1rem;
+            display: none;
+        }
+
+        .show-answer-btn.visible {
+            display: inline-block;
+        }
+
+        .correct-answer {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background-color: rgba(45, 122, 62, 0.3);
+            border-left: 4px solid var(--success);
+            display: none;
+        }
+
+        .correct-answer.visible {
+            display: block;
+        }
+
+        /* Multiple Choice Exercises */
+        .multiple-choice-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .choice-option {
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            background-color: var(--dark-blue);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .choice-option:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .choice-option.selected {
+            border-width: 3px;
+        }
+
+        .choice-option.correct {
+            border-color: var(--success);
+            background-color: rgba(45, 122, 62, 0.3);
+        }
+
+        .choice-option.incorrect {
+            border-color: var(--error);
+            background-color: rgba(185, 59, 59, 0.3);
+        }
+
+        .validate-btn {
+            margin-top: 1rem;
+            background-color: var(--success);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .validate-btn:hover {
+            background-color: #3d9a4e;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blocks-container,
+            .flashcards-grid {
+                flex-direction: column;
+            }
+
+            .content-block,
+            .flashcard {
+                min-width: 100%;
+            }
+
+            .tree-nav ul {
+                padding-left: 1rem;
+            }
+        }
+
+        /* Decorative elements inspired by the image */
+        .sketch-border {
+            position: relative;
+        }
+
+        .sketch-border::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid var(--black);
+            opacity: 0.1;
+            pointer-events: none;
+        }
+    </style>
 </head>
-<body class="dark-theme">
-    <div class="page-container">
+<body>
+    <header>
+        <h1>EduPath</h1>
+    </header>
+
+    <nav class="nav-container">
+        <ul class="tree-nav">
+            <li>
+                <a href="#topic1">Тема 1: Present Tenses</a>
+                <ul>
+                    <li>
+                        <a href="#subtopic1-1">Подтема 1.1: Present Simple</a>
+                        <ul>
+                            <li>
+                                <a href="#subtopic1-1-1">Подтема 1.1.1: Usage</a>
+                                <ul>
+                                    <li><a href="#detail1-1-1-1">Подтема 1.1.1.1: Habits</a></li>
+                                    <li><a href="#detail1-1-1-2">Подтема 1.1.1.2: Facts</a></li>
+                                    <li><a href="#detail1-1-1-3">Подтема 1.1.1.3: Schedules</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#topic2">Тема 2: Past Tenses</a>
+                <ul>
+                    <li>
+                        <a href="#subtopic2-1">Подтема 2.1: Past Simple</a>
+                        <ul>
+                            <li>
+                                <a href="#subtopic2-1-1">Подтема 2.1.1: Regular Verbs</a>
+                                <ul>
+                                    <li><a href="#detail2-1-1-1">Подтема 2.1.1.1: Formation</a></li>
+                                    <li><a href="#detail2-1-1-2">Подтема 2.1.1.2: Spelling Rules</a></li>
+                                    <li><a href="#detail2-1-1-3">Подтема 2.1.1.3: Pronunciation</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <h2 class="section-title">Флеш-карточки</h2>
+        <div class="blocks-container">
+            <div class="flashcards-grid">
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <span>To learn</span>
+                            <span class="flashcard-hint">Нажмите для перевода</span>
+                        </div>
+                        <div class="flashcard-back">
+                            <span>Учить, изучать</span>
+                            <span class="flashcard-hint">Нажмите обратно</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <span>Knowledge</span>
+                            <span class="flashcard-hint">Нажмите для перевода</span>
+                        </div>
+                        <div class="flashcard-back">
+                            <span>Знание</span>
+                            <span class="flashcard-hint">Нажмите обратно</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <span>To practice</span>
+                            <span class="flashcard-hint">Нажмите для перевода</span>
+                        </div>
+                        <div class="flashcard-back">
+                            <span>Практиковать</span>
+                            <span class="flashcard-hint">Нажмите обратно</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard" onclick="flipCard(this)">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <span>Grammar</span>
+                            <span class="flashcard-hint">Нажмите для перевода</span>
+                        </div>
+                        <div class="flashcard-back">
+                            <span>Грамматика</span>
+                            <span class="flashcard-hint">Нажмите обратно</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Упражнения</h2>
         
-        <!-- Header -->
-        <header class="site-header">
-            <div class="header-content">
-                <div class="logo">
-                    <span class="logo-icon">🕵️</span>
-                    <span class="logo-text">DETECTIVE ACADEMY</span>
+        <div class="blocks-container">
+            <!-- Text Input Exercise -->
+            <div class="exercise-block">
+                <h3 class="exercise-title">Раскройте скобки, используя Present Perfect:</h3>
+                
+                <div class="exercise-item">
+                    <div class="exercise-question">1. She _____ (finish) her homework already.</div>
+                    <div class="input-exercise">
+                        <button class="check-btn" onclick="checkTextAnswer(this, ['has finished'])">✓</button>
+                        <input type="text" class="answer-input" placeholder="Введите ваш ответ">
+                        <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Показать правильный ответ</button>
+                    </div>
+                    <div class="correct-answer">Правильный ответ: has finished</div>
                 </div>
-                <button id="theme-toggle" class="theme-toggle">
-                    <span class="theme-icon">◐</span>
-                    <span class="theme-text">НА СВЕТ</span>
-                </button>
-            </div>
-        </header>
 
-        <!-- Learning Path Tree (Vertical) -->
-        <section class="learning-path-section">
-            <h2 class="section-title">/// ПУТЬ ОБУЧЕНИЯ</h2>
-            <div class="learning-tree">
-                <div class="tree-node">
-                    <span class="tree-marker">■</span>
-                    <span class="tree-label">Основы детективного дела</span>
-                    <div class="tree-children">
-                        <div class="tree-node">
-                            <span class="tree-marker">▪</span>
-                            <span class="tree-label">Методы наблюдения</span>
-                        </div>
-                        <div class="tree-node">
-                            <span class="tree-marker">▪</span>
-                            <span class="tree-label">Сбор улик</span>
-                        </div>
-                        <div class="tree-node">
-                            <span class="tree-marker">▪</span>
-                            <span class="tree-label">Допрос свидетелей</span>
-                        </div>
+                <div class="exercise-item">
+                    <div class="exercise-question">2. They _____ (visit) London three times.</div>
+                    <div class="input-exercise">
+                        <button class="check-btn" onclick="checkTextAnswer(this, ['have visited'])">✓</button>
+                        <input type="text" class="answer-input" placeholder="Введите ваш ответ">
+                        <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Показать правильный ответ</button>
                     </div>
+                    <div class="correct-answer">Правильный ответ: have visited</div>
                 </div>
-                <div class="tree-node">
-                    <span class="tree-marker">■</span>
-                    <span class="tree-label">Present Perfect</span>
-                    <div class="tree-children">
-                        <div class="tree-node">
-                            <span class="tree-marker">▪</span>
-                            <span class="tree-label">Формула образования</span>
-                        </div>
-                        <div class="tree-node">
-                            <span class="tree-marker">▪</span>
-                            <span class="tree-label">Маркеры времени</span>
-                        </div>
-                        <div class="tree-node">
-                            <span class="tree-marker">▪</span>
-                            <span class="tree-label">Исключения</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="tree-node">
-                    <span class="tree-marker">□</span>
-                    <span class="tree-label">Past Simple</span>
-                    <div class="tree-children">
-                        <div class="tree-node">
-                            <span class="tree-marker">▪</span>
-                            <span class="tree-label">Правильные глаголы</span>
-                        </div>
-                        <div class="tree-node">
-                            <span class="tree-marker">▪</span>
-                            <span class="tree-label">Неправильные глаголы</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="tree-node">
-                    <span class="tree-marker">□</span>
-                    <span class="tree-label">Future Tenses</span>
-                </div>
-            </div>
-        </section>
 
-        <!-- Topic Group: Present Perfect -->
-        <section class="topic-group">
-            <div class="topic-header">
-                <h2 class="topic-title">📁 ДЕЛО №734: Present Perfect</h2>
-            </div>
-
-            <!-- Explanation Block -->
-            <div class="block explanation-block">
-                <div class="block-header">
-                    <span class="block-icon">📖</span>
-                    <h3 class="block-title">Пояснение: Когда используется Present Perfect</h3>
-                </div>
-                <div class="block-content">
-                    <p><strong>Present Perfect</strong> используется для описания действий, которые:</p>
-                    <ul class="rule-list">
-                        <li>Произошли в прошлом, но имеют результат в настоящем</li>
-                        <li>Начались в прошлом и продолжаются до сих пор</li>
-                        <li>Произошли в неопределённое время в прошлом</li>
-                    </ul>
-                    <div class="formula-box">
-                        <code>have/has + V3 (past participle)</code>
+                <div class="exercise-item">
+                    <div class="exercise-question">3. I _____ (never/see) such a beautiful sunset.</div>
+                    <div class="input-exercise">
+                        <button class="check-btn" onclick="checkTextAnswer(this, ['have never seen', 've never seen'])">✓</button>
+                        <input type="text" class="answer-input" placeholder="Введите ваш ответ">
+                        <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Показать правильный ответ</button>
                     </div>
-                    <div class="examples-grid">
-                        <div class="example-item positive">
-                            <span class="example-label">✓ Утверждение</span>
-                            <p>I <strong>have finished</strong> my homework.</p>
-                        </div>
-                        <div class="example-item negative">
-                            <span class="example-label">✗ Отрицание</span>
-                            <p>She <strong>hasn't called</strong> me yet.</p>
-                        </div>
-                        <div class="example-item question">
-                            <span class="example-label">? Вопрос</span>
-                            <p><strong>Have</strong> you <strong>seen</strong> this movie?</p>
-                        </div>
-                    </div>
+                    <div class="correct-answer">Правильный ответ: have never seen</div>
                 </div>
             </div>
 
-            <!-- Flashcards Block -->
-            <div class="block flashcards-block">
-                <div class="block-header">
-                    <span class="block-icon">🎴</span>
-                    <h3 class="block-title">Флеш-карточки</h3>
-                    <span class="block-subtitle">Нажмите для переворота</span>
+            <!-- Multiple Choice Exercise -->
+            <div class="exercise-block">
+                <h3 class="exercise-title">Выберите правильный вариант:</h3>
+                
+                <div class="exercise-item">
+                    <div class="exercise-question">1. Choose the correct form:</div>
+                    <div class="multiple-choice-options">
+                        <div class="choice-option" onclick="selectOption(this)" data-correct="false">A) I have went to Paris</div>
+                        <div class="choice-option" onclick="selectOption(this)" data-correct="true">B) I have gone to Paris</div>
+                        <div class="choice-option" onclick="selectOption(this)" data-correct="false">C) I have go to Paris</div>
+                    </div>
+                    <button class="validate-btn" onclick="validateMultipleChoice(this)">Проверить ответ</button>
                 </div>
-                <div class="flashcards-grid">
-                    <div class="flashcard" data-card="1">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">
-                                <span class="card-label">Переведите</span>
-                                <p class="card-content">Я уже сделал это</p>
-                            </div>
-                            <div class="flashcard-back">
-                                <span class="card-label">Ответ</span>
-                                <p class="card-content">I have already done it</p>
-                            </div>
-                        </div>
+
+                <div class="exercise-item">
+                    <div class="exercise-question">2. Which sentence is correct?</div>
+                    <div class="multiple-choice-options">
+                        <div class="choice-option" onclick="selectOption(this)" data-correct="true">A) She has lived here for 5 years</div>
+                        <div class="choice-option" onclick="selectOption(this)" data-correct="false">B) She has live here for 5 years</div>
+                        <div class="choice-option" onclick="selectOption(this)" data-correct="false">C) She have lived here for 5 years</div>
                     </div>
-                    <div class="flashcard" data-card="2">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">
-                                <span class="card-label">Переведите</span>
-                                <p class="card-content">Она никогда не была в Париже</p>
-                            </div>
-                            <div class="flashcard-back">
-                                <span class="card-label">Ответ</span>
-                                <p class="card-content">She has never been to Paris</p>
-                            </div>
-                        </div>
+                    <button class="validate-btn" onclick="validateMultipleChoice(this)">Проверить ответ</button>
+                </div>
+
+                <div class="exercise-item">
+                    <div class="exercise-question">3. Select the right variant:</div>
+                    <div class="multiple-choice-options">
+                        <div class="choice-option" onclick="selectOption(this)" data-correct="false">A) Did you ever tried sushi?</div>
+                        <div class="choice-option" onclick="selectOption(this)" data-correct="false">B) Have you ever tried sushi?</div>
+                        <div class="choice-option" onclick="selectOption(this)" data-correct="true">C) Have you ever try sushi?</div>
                     </div>
-                    <div class="flashcard" data-card="3">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">
-                                <span class="card-label">Вставьте have/has</span>
-                                <p class="card-content">They ___ lived here for 5 years</p>
-                            </div>
-                            <div class="flashcard-back">
-                                <span class="card-label">Ответ</span>
-                                <p class="card-content">have</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flashcard" data-card="4">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">
-                                <span class="card-label">Вставьте have/has</span>
-                                <p class="card-content">He ___ just arrived</p>
-                            </div>
-                            <div class="flashcard-back">
-                                <span class="card-label">Ответ</span>
-                                <p class="card-content">has</p>
-                            </div>
-                        </div>
-                    </div>
+                    <button class="validate-btn" onclick="validateMultipleChoice(this)">Проверить ответ</button>
                 </div>
             </div>
+        </div>
 
-            <!-- Assignment Block -->
-            <div class="block assignment-block">
-                <div class="block-header">
-                    <span class="block-icon">✏️</span>
-                    <h3 class="block-title">Задание: Present Perfect</h3>
-                    <span class="block-subtitle">Выполните упражнения</span>
-                </div>
-                <div class="block-content">
-                    <div class="assignment-item">
-                        <p class="assignment-question"><strong>1.</strong> Раскройте скобки, используя Present Perfect:</p>
-                        <div class="assignment-inputs">
-                            <div class="input-row">
-                                <span>a)</span>
-                                <input type="text" class="assignment-input" data-answer="have finished" placeholder="I (finish) ___ my work">
-                                <button class="check-btn">✓</button>
-                            </div>
-                            <div class="input-row">
-                                <span>b)</span>
-                                <input type="text" class="assignment-input" data-answer="hasn't seen" placeholder="She (not see) ___ him today">
-                                <button class="check-btn">✓</button>
-                            </div>
-                            <div class="input-row">
-                                <span>c)</span>
-                                <input type="text" class="assignment-input" data-answer="Have you been" placeholder="(you / be) ___ to London?">
-                                <button class="check-btn">✓</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="assignment-item">
-                        <p class="assignment-question"><strong>2.</strong> Выберите правильный вариант:</p>
-                        <div class="multiple-choice">
-                            <label class="choice-item">
-                                <input type="radio" name="q2" value="wrong">
-                                <span>I have go to school yesterday</span>
-                            </label>
-                            <label class="choice-item">
-                                <input type="radio" name="q2" value="correct">
-                                <span>I have gone to school</span>
-                            </label>
-                            <label class="choice-item">
-                                <input type="radio" name="q2" value="wrong">
-                                <span>I went to school already</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="assignment-feedback" style="display:none;">
-                        <span class="feedback-icon"></span>
-                        <span class="feedback-text"></span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Topic Group: Past Simple -->
-        <section class="topic-group">
-            <div class="topic-header">
-                <h2 class="topic-title">📁 ДЕЛО №735: Past Simple</h2>
+        <!-- Additional Content Blocks -->
+        <h2 class="section-title">Материалы для изучения</h2>
+        <div class="blocks-container">
+            <div class="content-block sketch-border">
+                <h3>Правила языка</h3>
+                <p>Подробное объяснение грамматических правил с примерами использования. Включает временные формы, артикли, предлоги и другие аспекты.</p>
             </div>
 
-            <!-- Explanation Block -->
-            <div class="block explanation-block">
-                <div class="block-header">
-                    <span class="block-icon">📖</span>
-                    <h3 class="block-title">Пояснение: Когда используется Past Simple</h3>
-                </div>
-                <div class="block-content">
-                    <p><strong>Past Simple</strong> используется для описания действий, которые:</p>
-                    <ul class="rule-list">
-                        <li>Произошли в определённое время в прошлом</li>
-                        <li>Завершены и не имеют связи с настоящим</li>
-                        <li>Были регулярными в прошлом (но больше не происходят)</li>
-                    </ul>
-                    <div class="formula-box">
-                        <code>V2 (past simple) или did + V1</code>
-                    </div>
-                </div>
+            <div class="content-block sketch-border">
+                <h3>Лексические темы</h3>
+                <p>Словарный запас по различным темам: повседневная жизнь, путешествия, работа, образование и многое другое.</p>
             </div>
 
-            <!-- Flashcards Block -->
-            <div class="block flashcards-block">
-                <div class="block-header">
-                    <span class="block-icon">🎴</span>
-                    <h3 class="block-title">Флеш-карточки</h3>
-                </div>
-                <div class="flashcards-grid">
-                    <div class="flashcard" data-card="5">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">
-                                <span class="card-label">Переведите</span>
-                                <p class="card-content">Я вчера ходил в кино</p>
-                            </div>
-                            <div class="flashcard-back">
-                                <span class="card-label">Ответ</span>
-                                <p class="card-content">I went to the cinema yesterday</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flashcard" data-card="6">
-                        <div class="flashcard-inner">
-                            <div class="flashcard-front">
-                                <span class="card-label">V2 форма</span>
-                                <p class="card-content">go → ?</p>
-                            </div>
-                            <div class="flashcard-back">
-                                <span class="card-label">Ответ</span>
-                                <p class="card-content">went</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="content-block sketch-border">
+                <h3>Практические задания</h3>
+                <p>Упражнения для закрепления материала: переводы, тесты, аудирование и письменные задания.</p>
             </div>
-        </section>
 
-        <!-- Footer -->
-        <footer class="site-footer">
-            <p>© 2024 DETECTIVE ACADEMY. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</p>
-            <p class="footer-note">■ КОНЕЦ ДОКУМЕНТА ■</p>
-        </footer>
+            <div class="content-block sketch-border">
+                <h3>Дополнительные ресурсы</h3>
+                <p>Ссылки на полезные материалы, видеоуроки, подкасты и интерактивные упражнения.</p>
+            </div>
+        </div>
+    </main>
 
-    </div>
+    <script>
+        // Flip Card Functionality
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
 
-    <script src="script.js"></script>
+        // Text Input Exercise Validation
+        function checkTextAnswer(button, correctAnswers) {
+            const exerciseItem = button.closest('.exercise-item');
+            const input = exerciseItem.querySelector('.answer-input');
+            const showAnswerBtn = exerciseItem.querySelector('.show-answer-btn');
+            const correctAnswerDiv = exerciseItem.querySelector('.correct-answer');
+            
+            const userAnswer = input.value.trim().toLowerCase();
+            const isCorrect = correctAnswers.some(answer => answer.toLowerCase() === userAnswer);
+            
+            if (isCorrect) {
+                input.classList.remove('incorrect');
+                input.classList.add('correct');
+                showAnswerBtn.classList.remove('visible');
+                correctAnswerDiv.classList.remove('visible');
+            } else {
+                input.classList.remove('correct');
+                input.classList.add('incorrect');
+                showAnswerBtn.classList.add('visible');
+            }
+        }
+
+        function showCorrectAnswer(button) {
+            const exerciseItem = button.closest('.exercise-item');
+            const correctAnswerDiv = exerciseItem.querySelector('.correct-answer');
+            correctAnswerDiv.classList.toggle('visible');
+        }
+
+        // Multiple Choice Exercise
+        function selectOption(option) {
+            const container = option.closest('.multiple-choice-options');
+            const allOptions = container.querySelectorAll('.choice-option');
+            
+            allOptions.forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            option.classList.add('selected');
+        }
+
+        function validateMultipleChoice(button) {
+            const exerciseItem = button.closest('.exercise-item');
+            const selectedOption = exerciseItem.querySelector('.choice-option.selected');
+            
+            if (!selectedOption) {
+                alert('Пожалуйста, выберите вариант ответа');
+                return;
+            }
+            
+            const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+            
+            if (isCorrect) {
+                selectedOption.classList.remove('incorrect');
+                selectedOption.classList.add('correct');
+            } else {
+                selectedOption.classList.remove('correct');
+                selectedOption.classList.add('incorrect');
+            }
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

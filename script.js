@@ -1,4 +1,4 @@
-// Flash Card Flip
+// Flash Card Flip - Universal for all card types
 function flipCard(card) {
     card.classList.toggle('flipped');
 }
@@ -19,7 +19,6 @@ function checkTextAnswer(button, correctAnswers) {
         showAnswerBtn.classList.remove('visible');
         correctAnswerDiv.classList.remove('visible');
         
-        // Success animation
         button.style.transform = 'scale(1.2)';
         setTimeout(() => {
             button.style.transform = 'scale(1)';
@@ -42,19 +41,29 @@ function selectOption(option) {
     const container = option.closest('.multiple-choice-options');
     const allOptions = container.querySelectorAll('.choice-option');
     
+    // Clear all selections (even after validation)
     allOptions.forEach(opt => {
         opt.classList.remove('selected');
+        opt.classList.remove('correct');
+        opt.classList.remove('incorrect');
     });
     
     option.classList.add('selected');
+    
+    // Hide explanation text when selecting new option
+    const exerciseItem = container.closest('.exercise-item');
+    const explanationText = exerciseItem.querySelector('.explanation-text');
+    if (explanationText) {
+        explanationText.classList.remove('visible');
+    }
 }
 
 function validateMultipleChoice(button) {
     const exerciseItem = button.closest('.exercise-item');
     const selectedOption = exerciseItem.querySelector('.choice-option.selected');
+    const explanationText = exerciseItem.querySelector('.explanation-text');
     
     if (!selectedOption) {
-        // Shake animation for button
         button.style.animation = 'shake 0.5s';
         setTimeout(() => {
             button.style.animation = '';
@@ -70,6 +79,13 @@ function validateMultipleChoice(button) {
     } else {
         selectedOption.classList.remove('correct');
         selectedOption.classList.add('incorrect');
+    }
+    
+    // Show explanation automatically
+    if (explanationText) {
+        const explanation = selectedOption.getAttribute('data-explanation');
+        explanationText.textContent = explanation;
+        explanationText.classList.add('visible');
     }
 }
 
@@ -87,7 +103,6 @@ function closeDonateModal() {
 }
 
 function selectDonate(amount) {
-    // Create ripple effect
     const event = window.event;
     const target = event.currentTarget;
     const rect = target.getBoundingClientRect();
@@ -110,7 +125,7 @@ function selectDonate(amount) {
     
     setTimeout(() => {
         ripple.remove();
-        alert(`Thank you! You selected ${amount} ₽. Payment integration would go here.`);
+        alert(`Thank you! You selected ${amount} ₽.`);
         closeDonateModal();
     }, 600);
 }
@@ -165,7 +180,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe all blocks
-document.querySelectorAll('.content-block, .exercise-block, .flashcard').forEach(el => {
+document.querySelectorAll('.content-block, .examples-block, .flashcard, .mini-flashcard, .inline-flashcard-right').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';

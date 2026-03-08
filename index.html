@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnHub | Образовательная платформа</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+    <div class="page-container">
+        
+        <!-- Header -->
+        <header class="site-header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📚</span>
+                    <span class="logo-text">LearnHub</span>
+                </div>
+                <div class="header-actions">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">
+                        <span class="theme-icon">🌙</span>
+                        <span class="theme-text">Тёмная</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Learning Path Tree -->
+        <section class="learning-path-section">
+            <h2 class="section-title">📍 Путь обучения</h2>
+            <div class="learning-tree">
+                <div class="tree-node completed">
+                    <div class="node-circle">✓</div>
+                    <div class="node-label">Основы</div>
+                    <div class="node-connector"></div>
+                </div>
+                <div class="tree-node completed">
+                    <div class="node-circle">✓</div>
+                    <div class="node-label">Present Simple</div>
+                    <div class="node-connector"></div>
+                </div>
+                <div class="tree-node active">
+                    <div class="node-circle">●</div>
+                    <div class="node-label">Present Perfect</div>
+                    <div class="node-connector"></div>
+                </div>
+                <div class="tree-node locked">
+                    <div class="node-circle">🔒</div>
+                    <div class="node-label">Past Simple</div>
+                    <div class="node-connector"></div>
+                </div>
+                <div class="tree-node locked">
+                    <div class="node-circle">🔒</div>
+                    <div class="node-label">Future Tenses</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic Group: Present Perfect -->
+        <section class="topic-group">
+            <div class="topic-header">
+                <h2 class="topic-title">📘 Present Perfect</h2>
+                <span class="topic-progress">Прогресс: 3/8</span>
+            </div>
+
+            <!-- Explanation Block -->
+            <div class="block explanation-block">
+                <div class="block-header">
+                    <span class="block-icon">📖</span>
+                    <h3 class="block-title">Пояснение: Когда используется Present Perfect</h3>
+                </div>
+                <div class="block-content">
+                    <p><strong>Present Perfect</strong> используется для описания действий, которые:</p>
+                    <ul class="rule-list">
+                        <li>Произошли в прошлом, но имеют результат в настоящем</li>
+                        <li>Начались в прошлом и продолжаются до сих пор</li>
+                        <li>Произошли в неопределённое время в прошлом</li>
+                    </ul>
+                    <div class="formula-box">
+                        <code>have/has + V3 (past participle)</code>
+                    </div>
+                    <div class="examples-grid">
+                        <div class="example-item positive">
+                            <span class="example-label">✓ Утверждение</span>
+                            <p>I <strong>have finished</strong> my homework.</p>
+                        </div>
+                        <div class="example-item negative">
+                            <span class="example-label">✗ Отрицание</span>
+                            <p>She <strong>hasn't called</strong> me yet.</p>
+                        </div>
+                        <div class="example-item question">
+                            <span class="example-label">? Вопрос</span>
+                            <p><strong>Have</strong> you <strong>seen</strong> this movie?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flashcards Block -->
+            <div class="block flashcards-block">
+                <div class="block-header">
+                    <span class="block-icon">🎴</span>
+                    <h3 class="block-title">Флеш-карточки</h3>
+                    <span class="block-subtitle">Нажмите для переворота</span>
+                </div>
+                <div class="flashcards-grid">
+                    <div class="flashcard" data-card="1">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <span class="card-label">Переведите</span>
+                                <p class="card-content">Я уже сделал это</p>
+                            </div>
+                            <div class="flashcard-back">
+                                <span class="card-label">Ответ</span>
+                                <p class="card-content">I have already done it</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flashcard" data-card="2">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <span class="card-label">Переведите</span>
+                                <p class="card-content">Она никогда не была в Париже</p>
+                            </div>
+                            <div class="flashcard-back">
+                                <span class="card-label">Ответ</span>
+                                <p class="card-content">She has never been to Paris</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flashcard" data-card="3">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <span class="card-label">Вставьте have/has</span>
+                                <p class="card-content">They ___ lived here for 5 years</p>
+                            </div>
+                            <div class="flashcard-back">
+                                <span class="card-label">Ответ</span>
+                                <p class="card-content">have</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flashcard" data-card="4">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <span class="card-label">Вставьте have/has</span>
+                                <p class="card-content">He ___ just arrived</p>
+                            </div>
+                            <div class="flashcard-back">
+                                <span class="card-label">Ответ</span>
+                                <p class="card-content">has</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assignment Block -->
+            <div class="block assignment-block">
+                <div class="block-header">
+                    <span class="block-icon">✏️</span>
+                    <h3 class="block-title">Задание: Present Perfect</h3>
+                    <span class="block-subtitle">Выполните упражнения</span>
+                </div>
+                <div class="block-content">
+                    <div class="assignment-item">
+                        <p class="assignment-question"><strong>1.</strong> Раскройте скобки, используя Present Perfect:</p>
+                        <div class="assignment-inputs">
+                            <div class="input-row">
+                                <span>a)</span>
+                                <input type="text" class="assignment-input" placeholder="I (finish) ___ my work">
+                                <button class="check-btn" data-answer="have finished">✓</button>
+                            </div>
+                            <div class="input-row">
+                                <span>b)</span>
+                                <input type="text" class="assignment-input" placeholder="She (not see) ___ him today">
+                                <button class="check-btn" data-answer="hasn't seen">✓</button>
+                            </div>
+                            <div class="input-row">
+                                <span>c)</span>
+                                <input type="text" class="assignment-input" placeholder="(you / be) ___ to London?">
+                                <button class="check-btn" data-answer="Have you been">✓</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="assignment-item">
+                        <p class="assignment-question"><strong>2.</strong> Выберите правильный вариант:</p>
+                        <div class="multiple-choice">
+                            <label class="choice-item">
+                                <input type="radio" name="q2" value="wrong">
+                                <span>I have go to school yesterday</span>
+                            </label>
+                            <label class="choice-item">
+                                <input type="radio" name="q2" value="correct">
+                                <span>I have gone to school</span>
+                            </label>
+                            <label class="choice-item">
+                                <input type="radio" name="q2" value="wrong">
+                                <span>I went to school already</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="assignment-feedback" style="display:none;">
+                        <span class="feedback-icon"></span>
+                        <span class="feedback-text"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic Group: Past Simple -->
+        <section class="topic-group">
+            <div class="topic-header">
+                <h2 class="topic-title">📗 Past Simple</h2>
+                <span class="topic-progress">Прогресс: 0/6</span>
+            </div>
+
+            <!-- Explanation Block -->
+            <div class="block explanation-block">
+                <div class="block-header">
+                    <span class="block-icon">📖</span>
+                    <h3 class="block-title">Пояснение: Когда используется Past Simple</h3>
+                </div>
+                <div class="block-content">
+                    <p><strong>Past Simple</strong> используется для описания действий, которые:</p>
+                    <ul class="rule-list">
+                        <li>Произошли в определённое время в прошлом</li>
+                        <li>Завершены и не имеют связи с настоящим</li>
+                        <li>Были регулярными в прошлом (но больше не происходят)</li>
+                    </ul>
+                    <div class="formula-box">
+                        <code>V2 (past simple) или did + V1</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flashcards Block -->
+            <div class="block flashcards-block">
+                <div class="block-header">
+                    <span class="block-icon">🎴</span>
+                    <h3 class="block-title">Флеш-карточки</h3>
+                </div>
+                <div class="flashcards-grid">
+                    <div class="flashcard" data-card="5">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <span class="card-label">Переведите</span>
+                                <p class="card-content">Я вчера ходил в кино</p>
+                            </div>
+                            <div class="flashcard-back">
+                                <span class="card-label">Ответ</span>
+                                <p class="card-content">I went to the cinema yesterday</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flashcard" data-card="6">
+                        <div class="flashcard-inner">
+                            <div class="flashcard-front">
+                                <span class="card-label">V2 форма</span>
+                                <p class="card-content">go → ?</p>
+                            </div>
+                            <div class="flashcard-back">
+                                <span class="card-label">Ответ</span>
+                                <p class="card-content">went</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <p>© 2024 LearnHub. Все права защищены.</p>
+            <p class="footer-note">Продолжайте учиться каждый день! 🚀</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

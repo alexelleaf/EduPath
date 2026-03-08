@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduPath - Образовательная платформа</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header class="header">
         <div class="header-content">
@@ -18,8 +22,11 @@
             </div>
             <div class="development-notice">Сайт в разработке</div>
             <button class="donate-btn" onclick="showDonateModal()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                    </path>
                 </svg>
                 Поддержать
             </button>
@@ -110,7 +117,7 @@
                         <div class="block-icon">📋</div>
                         <h3>Present Perfect</h3>
                         <p><strong>Formation:</strong> have/has + past participle (V3)</p>
-                        
+
                         <table class="grammar-table">
                             <thead>
                                 <tr>
@@ -144,7 +151,8 @@
                             <li>Recent actions with present results (with just/already/yet)</li>
                         </ul>
 
-                        <div class="inline-flashcard inline-flashcard-right" onclick="flipCard(this)" data-front="Unspecified" data-back="Неуказанный"></div>
+
+
 
                         <p><strong>Examples:</strong></p>
                         <ul class="example-list">
@@ -154,46 +162,42 @@
                             <li>They have just finished their homework.</li>
                         </ul>
 
-                        <!-- Mini Flashcard Block (3 rows × 4 cards) -->
-                        <div class="mini-flashcard-block">
-                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Ever" data-back="Когда-либо"></div>
-                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Never" data-back="Никогда"></div>
-                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Just" data-back="Только что"></div>
-                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Already" data-back="Уже"></div>
-                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Yet" data-back="Ещё/Уже"></div>
-                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Since" data-back="С (времени)"></div>
-                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="For" data-back="В течение"></div>
-                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Been" data-back="Был/Была"></div>
-                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Gone" data-back="Ушёл/Ушла"></div>
-                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Done" data-back="Сделал/Сделала"></div>
-                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Seen" data-back="Видел/Видела"></div>
-                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Had" data-back="Имел/Имела"></div>
-                        </div>
+                       
 
                         <div class="exercise-item">
-                            <div class="exercise-question">1. She _____ (finish) her homework already.</div>
+                            <div class="exercise-question">1. She _____ (finish) her homework
+                                already.</div>
                             <div class="input-exercise">
-                                <button class="check-btn" onclick="checkTextAnswer(this, ['has finished'])">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <button class="check-btn"
+                                    onclick="checkTextAnswer(this, ['has finished'])">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="3">
                                         <polyline points="20 6 9 17 4 12"></polyline>
                                     </svg>
                                 </button>
-                                <input type="text" class="answer-input" placeholder="Type your answer">
-                                <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Show answer</button>
+                                <input type="text" class="answer-input"
+                                    placeholder="Type your answer">
+                                <button class="show-answer-btn"
+                                    onclick="showCorrectAnswer(this)">Show answer</button>
                             </div>
                             <div class="correct-answer">✓ has finished</div>
                         </div>
 
                         <div class="exercise-item">
-                            <div class="exercise-question">2. They _____ (visit) London three times.</div>
+                            <div class="exercise-question">2. They _____ (visit) London three times.
+                            </div>
                             <div class="input-exercise">
-                                <button class="check-btn" onclick="checkTextAnswer(this, ['have visited'])">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <button class="check-btn"
+                                    onclick="checkTextAnswer(this, ['have visited'])">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="3">
                                         <polyline points="20 6 9 17 4 12"></polyline>
                                     </svg>
                                 </button>
-                                <input type="text" class="answer-input" placeholder="Type your answer">
-                                <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Show answer</button>
+                                <input type="text" class="answer-input"
+                                    placeholder="Type your answer">
+                                <button class="show-answer-btn"
+                                    onclick="showCorrectAnswer(this)">Show answer</button>
                             </div>
                             <div class="correct-answer">✓ have visited</div>
                         </div>
@@ -207,7 +211,8 @@
 
                     <div class="example-subblock">
                         <h4>Подтема 1.1: Завершённые действия</h4>
-                        <p>Используется для действий, которые произошли в прошлом, но результат важен сейчас.</p>
+                        <p>Используется для действий, которые произошли в прошлом, но результат
+                            важен сейчас.</p>
                         <div class="example-sentence">
                             <span class="example-en">I have completed the project.</span>
                             <span class="example-ru">Я завершил проект.</span>
@@ -218,7 +223,8 @@
 
                     <div class="example-subblock">
                         <h4>Подтема 1.2: Действия с продолжением</h4>
-                        <p>Описывает действия, которые начались в прошлом и продолжаются до настоящего момента.</p>
+                        <p>Описывает действия, которые начались в прошлом и продолжаются до
+                            настоящего момента.</p>
                         <div class="example-sentence">
                             <span class="example-en">She has worked here since 2020.</span>
                             <span class="example-ru">Она работает здесь с 2020 года.</span>
@@ -274,8 +280,8 @@
                             <li>General truths and facts</li>
                         </ul>
 
-                        <div class="inline-flashcard inline-flashcard-right" onclick="flipCard(this)" data-front="Habit" data-back="Привычка"></div>
 
+            
                         <p><strong>Examples:</strong></p>
                         <ul class="example-list">
                             <li>I work in an office.</li>
@@ -285,20 +291,28 @@
                         <div class="exercise-item">
                             <div class="exercise-question">1. Choose the correct form:</div>
                             <div class="multiple-choice-options">
-                                <div class="choice-option" onclick="selectOption(this)" data-correct="false" data-explanation="Incorrect: 'She' is third person singular, which requires the verb to end in -s.">
+                                <div class="choice-option" onclick="selectOption(this)"
+                                    data-correct="false"
+                                    data-explanation="Incorrect: 'She' is third person singular, which requires the verb to end in -s.">
                                     <span class="option-marker">A</span>
                                     <span class="option-text">She drink coffee every morning</span>
                                 </div>
-                                <div class="choice-option" onclick="selectOption(this)" data-correct="true" data-explanation="Correct! In Present Simple, third person singular requires adding -s to the base verb.">
+                                <div class="choice-option" onclick="selectOption(this)"
+                                    data-correct="true"
+                                    data-explanation="Correct! In Present Simple, third person singular requires adding -s to the base verb.">
                                     <span class="option-marker">B</span>
                                     <span class="option-text">She drinks coffee every morning</span>
                                 </div>
-                                <div class="choice-option" onclick="selectOption(this)" data-correct="false" data-explanation="Incorrect: 'Drinking' is present participle, not Present Simple.">
+                                <div class="choice-option" onclick="selectOption(this)"
+                                    data-correct="false"
+                                    data-explanation="Incorrect: 'Drinking' is present participle, not Present Simple.">
                                     <span class="option-marker">C</span>
-                                    <span class="option-text">She drinking coffee every morning</span>
+                                    <span class="option-text">She drinking coffee every
+                                        morning</span>
                                 </div>
                             </div>
-                            <button class="validate-btn" onclick="validateMultipleChoice(this)">Check Answer</button>
+                            <button class="validate-btn"
+                                onclick="validateMultipleChoice(this)">Check Answer</button>
                             <div class="explanation-text" style="display: none;"></div>
                         </div>
                     </div>
@@ -330,6 +344,99 @@
                     </div>
                 </div>
             </div>
+        </section>
+
+
+<section class="content-section">
+            <h2 class="section-title">
+                <span class="title-icon">🎴</span>
+                Мини-флеш-карточки
+            </h2>
+            <div class="mini-flashcards-grid">
+    <div class="mini-flashcard" onclick="flipCard(this)">
+        <div class="mini-flashcard-inner">
+            <div class="mini-flashcard-front">
+                <span class="mini-card-text">To learn</span>
+            </div>
+            <div class="mini-flashcard-back">
+                <span class="mini-card-text">Учить</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mini-flashcard" onclick="flipCard(this)">
+        <div class="mini-flashcard-inner">
+            <div class="mini-flashcard-front">
+                <span class="mini-card-text">Knowledge</span>
+            </div>
+            <div class="mini-flashcard-back">
+                <span class="mini-card-text">Знание</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mini-flashcard" onclick="flipCard(this)">
+        <div class="mini-flashcard-inner">
+            <div class="mini-flashcard-front">
+                <span class="mini-card-text">To practice</span>
+            </div>
+            <div class="mini-flashcard-back">
+                <span class="mini-card-text">Практиковать</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mini-flashcard" onclick="flipCard(this)">
+        <div class="mini-flashcard-inner">
+            <div class="mini-flashcard-front">
+                <span class="mini-card-text">Grammar</span>
+            </div>
+            <div class="mini-flashcard-back">
+                <span class="mini-card-text">Грамматика</span>
+            </div>
+        </div>
+    </div>
+    <div class="mini-flashcard" onclick="flipCard(this)">
+        <div class="mini-flashcard-inner">
+            <div class="mini-flashcard-front">
+                <span class="mini-card-text">Grammar</span>
+            </div>
+            <div class="mini-flashcard-back">
+                <span class="mini-card-text">Грамматика</span>
+            </div>
+        </div>
+    </div>
+    <div class="mini-flashcard" onclick="flipCard(this)">
+        <div class="mini-flashcard-inner">
+            <div class="mini-flashcard-front">
+                <span class="mini-card-text">Grammar</span>
+            </div>
+            <div class="mini-flashcard-back">
+                <span class="mini-card-text">Грамматика</span>
+            </div>
+        </div>
+    </div>
+    <div class="mini-flashcard" onclick="flipCard(this)">
+        <div class="mini-flashcard-inner">
+            <div class="mini-flashcard-front">
+                <span class="mini-card-text">Grammar</span>
+            </div>
+            <div class="mini-flashcard-back">
+                <span class="mini-card-text">Грамматика</span>
+            </div>
+        </div>
+    </div>
+    <div class="mini-flashcard" onclick="flipCard(this)">
+        <div class="mini-flashcard-inner">
+            <div class="mini-flashcard-front">
+                <span class="mini-card-text">Grammar</span>
+            </div>
+            <div class="mini-flashcard-back">
+                <span class="mini-card-text">Грамматика</span>
+            </div>
+        </div>
+    </div>
+</div>
         </section>
 
         <!-- Materials Section -->
@@ -389,19 +496,24 @@
                 <div class="author-links">
                     <a href="https://github.com" target="_blank" class="author-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                         </svg>
                         <span>GitHub</span>
                     </a>
                     <a href="https://t.me" target="_blank" class="author-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                            <path
+                                d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
                         </svg>
                         <span>Telegram</span>
                     </a>
                     <a href="mailto:contact@edupath.com" class="author-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
                         <span>Email</span>
@@ -410,7 +522,8 @@
             </div>
             <div class="footer-section">
                 <h4>Project</h4>
-                <p>EduPath is an open-source educational platform designed to make learning accessible and effective.</p>
+                <p>EduPath is an open-source educational platform designed to make learning
+                    accessible and effective.</p>
             </div>
             <div class="footer-section">
                 <h4>License</h4>
@@ -423,16 +536,18 @@
         <div class="modal-backdrop" onclick="closeDonateModal()"></div>
         <div class="modal-content">
             <button class="modal-close" onclick="closeDonateModal()">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
-            
+
             <div class="modal-header">
-                <div class="modal-icon">☕</div>
+               
                 <h2>Support the Project</h2>
-                <p>If our materials help you learn, consider supporting the development of the platform</p>
+                <p>If our materials help you learn, consider supporting the development of the
+                    platform</p>
             </div>
 
             <div class="donate-options">
@@ -457,11 +572,13 @@
 
             <div class="donate-footer">
                 <p>Thank you for your support! ❤️</p>
-                <p class="donate-note">All donations go towards improving the platform and creating new materials</p>
+                <p class="donate-note">All donations go towards improving the platform and creating
+                    new materials</p>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>

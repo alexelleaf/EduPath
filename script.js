@@ -1,6 +1,6 @@
-// Flip Card Functionality
-function flipCard(card) {
-    card.classList.toggle('flipped');
+// Flash Card Page Turn
+function turnPage(card) {
+    card.classList.toggle('turned');
 }
 
 // Text Input Exercise Validation
@@ -60,6 +60,28 @@ function validateMultipleChoice(button) {
     } else {
         selectedOption.classList.remove('correct');
         selectedOption.classList.add('incorrect');
+    }
+}
+
+// Donate Modal
+function showDonateModal() {
+    document.getElementById('donateModal').style.display = 'block';
+}
+
+function closeDonateModal() {
+    document.getElementById('donateModal').style.display = 'none';
+}
+
+function selectDonate(amount) {
+    alert(`Спасибо! Вы выбрали сумму ${amount} ₽. Здесь будет интеграция с платёжной системой.`);
+    closeDonateModal();
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('donateModal');
+    if (event.target === modal) {
+        closeDonateModal();
     }
 }
 

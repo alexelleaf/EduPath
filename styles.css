@@ -112,16 +112,6 @@ body::before {
     text-transform: uppercase;
 }
 
-.development-notice {
-    text-align: center;
-    color: var(--warning);
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    opacity: 0.5;
-    white-space: nowrap;
-}
 
 .donate-btn {
     display: inline-flex;
@@ -1100,9 +1090,6 @@ body::before {
         font-size: 0.6rem;
     }
 
-    .development-notice {
-        font-size: 0.6rem;
-    }
 
     .donate-btn {
         padding: 0.50rem 0.7rem;

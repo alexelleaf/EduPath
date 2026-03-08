@@ -1,78 +1,96 @@
 /* =============================================================================
-LEARNHUB — EDUCATIONAL PLATFORM LOGIC
+DETECTIVE ACADEMY — EDUCATIONAL PLATFORM LOGIC
 ============================================================================= */
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('■ LearnHub Ready ■');
+    console.log('■ DETECTIVE ACADEMY READY ■');
 
     /* ---------------------------------------------------------------------
        THEME TOGGLE
        --------------------------------------------------------------------- */
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = themeToggle.querySelector('.theme-icon');
-    const themeText = themeToggle.querySelector('.theme-text');
-    const body = document.body;
+    var themeToggle = document.getElementById('theme-toggle');
+    var themeIcon = themeToggle.querySelector('.theme-icon');
+    var themeText = themeToggle.querySelector('.theme-text');
+    var body = document.body;
 
-    // Load saved theme or default to light
-    const savedTheme = localStorage.getItem('learnhub-theme') || 'light';
-    if (savedTheme === 'dark') {
+    // Load saved theme or default to dark
+    var savedTheme = localStorage.getItem('detective-academy-theme') || 'dark';
+    if (savedTheme === 'light') {
+        body.classList.add('light-theme');
+        body.classList.remove('dark-theme');
+        themeIcon.textContent = '◑';
+        themeText.textContent = 'ВО ТЬМУ';
+    } else {
         body.classList.add('dark-theme');
-        themeIcon.textContent = '☀️';
-        themeText.textContent = 'Светлая';
+        body.classList.remove('light-theme');
+        themeIcon.textContent = '◐';
+        themeText.textContent = 'НА СВЕТ';
     }
 
     themeToggle.addEventListener('click', function() {
-        if (body.classList.contains('light-theme')) {
-            body.classList.remove('light-theme');
-            body.classList.add('dark-theme');
-            themeIcon.textContent = '☀️';
-            themeText.textContent = 'Светлая';
-            localStorage.setItem('learnhub-theme', 'dark');
-        } else {
+        if (body.classList.contains('dark-theme')) {
             body.classList.remove('dark-theme');
             body.classList.add('light-theme');
-            themeIcon.textContent = '🌙';
-            themeText.textContent = 'Тёмная';
-            localStorage.setItem('learnhub-theme', 'light');
+            themeIcon.textContent = '◑';
+            themeText.textContent = 'ВО ТЬМУ';
+            localStorage.setItem('detective-academy-theme', 'light');
+        } else {
+            body.classList.remove('light-theme');
+            body.classList.add('dark-theme');
+            themeIcon.textContent = '◐';
+            themeText.textContent = 'НА СВЕТ';
+            localStorage.setItem('detective-academy-theme', 'dark');
         }
     });
 
     /* ---------------------------------------------------------------------
        FLASHCARDS FLIP FUNCTIONALITY
        --------------------------------------------------------------------- */
-    const flashcards = document.querySelectorAll('.flashcard');
+    var flashcards = document.querySelectorAll('.flashcard');
 
     flashcards.forEach(function(card) {
         card.addEventListener('click', function() {
             this.classList.toggle('flipped');
+        });
+
+        // Keyboard accessibility
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', 'Флеш-карточка. Нажмите для переворота');
+
+        card.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.classList.toggle('flipped');
+            }
         });
     });
 
     /* ---------------------------------------------------------------------
        ASSIGNMENT CHECK FUNCTIONALITY
        --------------------------------------------------------------------- */
-    const checkButtons = document.querySelectorAll('.check-btn');
+    var checkButtons = document.querySelectorAll('.check-btn');
 
     checkButtons.forEach(function(btn) {
         btn.addEventListener('click', function() {
-            const input = this.previousElementSibling;
-            const userAnswer = input.value.trim().toLowerCase();
-            const correctAnswer = this.dataset.answer.toLowerCase();
+            var input = this.previousElementSibling;
+            var userAnswer = input.value.trim().toLowerCase();
+            var correctAnswer = input.dataset.answer.toLowerCase();
 
             if (userAnswer === correctAnswer) {
                 input.classList.add('correct');
                 input.classList.remove('incorrect');
-                this.classList.add('checked-correct');
-                this.classList.remove('checked-incorrect');
-                this.textContent = '✓';
-                showFeedback(true, 'Правильно! Молодец! 🎉');
+                btn.classList.add('checked-correct');
+                btn.classList.remove('checked-incorrect');
+                btn.textContent = '✓';
+                showFeedback(true, 'Правильно. Дело закрыто. 🎯');
             } else {
                 input.classList.add('incorrect');
                 input.classList.remove('correct');
-                this.classList.add('checked-incorrect');
-                this.classList.remove('checked-correct');
-                this.textContent = '✗';
-                showFeedback(false, 'Попробуй ещё раз. Правильный ответ: ' + this.dataset.answer);
+                btn.classList.add('checked-incorrect');
+                btn.classList.remove('checked-correct');
+                btn.textContent = '✗';
+                showFeedback(false, 'Ошибка. Попробуйте снова. Правильный ответ: ' + input.dataset.answer);
             }
         });
     });
@@ -80,17 +98,16 @@ document.addEventListener('DOMContentLoaded', function() {
     /* ---------------------------------------------------------------------
        MULTIPLE CHOICE FUNCTIONALITY
        --------------------------------------------------------------------- */
-    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    var radioButtons = document.querySelectorAll('input[type="radio"]');
 
     radioButtons.forEach(function(radio) {
         radio.addEventListener('change', function() {
-            const parent = this.closest('.assignment-item');
-            const feedback = parent.querySelector('.assignment-feedback');
-
+            var parent = this.closest('.assignment-item');
+            
             if (this.value === 'correct') {
-                showFeedbackInParent(parent, true, 'Верно! Отличная работа! ✓');
+                showFeedbackInParent(parent, true, 'Верно. Отличная работа. ✓');
             } else {
-                showFeedbackInParent(parent, false, 'Неправильно. Попробуй ещё раз.');
+                showFeedbackInParent(parent, false, 'Неверно. Изучите материал ещё раз.');
             }
         });
     });
@@ -100,22 +117,21 @@ document.addEventListener('DOMContentLoaded', function() {
        --------------------------------------------------------------------- */
     function showFeedback(isSuccess, message) {
         // Remove existing feedback
-        const existing = document.querySelector('.assignment-feedback');
+        var existing = document.querySelector('.assignment-feedback');
         if (existing) {
             existing.remove();
         }
 
         // Create new feedback
-        const feedback = document.createElement('div');
+        var feedback = document.createElement('div');
         feedback.className = 'assignment-feedback ' + (isSuccess ? 'success' : 'error');
         feedback.style.display = 'flex';
-        feedback.innerHTML = `
-            <span class="feedback-icon">${isSuccess ? '✓' : '✗'}</span>
-            <span class="feedback-text">${message}</span>
-        `;
+        feedback.innerHTML = 
+            '<span class="feedback-icon">' + (isSuccess ? '✓' : '✗') + '</span>' +
+            '<span class="feedback-text">' + message + '</span>';
 
         // Insert after the last assignment-item
-        const lastItem = document.querySelector('.assignment-item:last-child');
+        var lastItem = document.querySelector('.assignment-item:last-child');
         if (lastItem) {
             lastItem.parentNode.insertBefore(feedback, lastItem.nextSibling);
         }
@@ -131,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showFeedbackInParent(parent, isSuccess, message) {
-        let feedback = parent.querySelector('.assignment-feedback');
+        var feedback = parent.querySelector('.assignment-feedback');
 
         if (!feedback) {
             feedback = document.createElement('div');
@@ -141,24 +157,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         feedback.className = 'assignment-feedback ' + (isSuccess ? 'success' : 'error');
         feedback.style.display = 'flex';
-        feedback.innerHTML = `
-            <span class="feedback-icon">${isSuccess ? '✓' : '✗'}</span>
-            <span class="feedback-text">${message}</span>
-        `;
+        feedback.innerHTML = 
+            '<span class="feedback-icon">' + (isSuccess ? '✓' : '✗') + '</span>' +
+            '<span class="feedback-text">' + message + '</span>';
     }
-
-    /* ---------------------------------------------------------------------
-       PROGRESS TRACKING (Optional Enhancement)
-       --------------------------------------------------------------------- */
-    // Track completed flashcards
-    flashcards.forEach(function(card) {
-        card.addEventListener('click', function() {
-            if (this.classList.contains('flipped')) {
-                this.style.opacity = '0.7';
-                // Could save progress to localStorage here
-            }
-        });
-    });
 
     /* ---------------------------------------------------------------------
        SMOOTH SCROLL FOR ANCHORS
@@ -166,31 +168,15 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
+            var targetId = this.getAttribute('href');
             if (targetId === '#') return;
 
-            const target = document.querySelector(targetId);
+            var target = document.querySelector(targetId);
             if (target) {
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
-            }
-        });
-    });
-
-    /* ---------------------------------------------------------------------
-       KEYBOARD ACCESSIBILITY FOR FLASHCARDS
-       --------------------------------------------------------------------- */
-    flashcards.forEach(function(card) {
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('role', 'button');
-        card.setAttribute('aria-label', 'Флеш-карточка. Нажмите для переворота');
-
-        card.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.classList.toggle('flipped');
             }
         });
     });

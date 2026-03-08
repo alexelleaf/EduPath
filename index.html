@@ -3,56 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnHub | Образовательная платформа</title>
+    <title>Detective Academy | Обучение</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body class="light-theme">
+<body class="dark-theme">
     <div class="page-container">
         
         <!-- Header -->
         <header class="site-header">
             <div class="header-content">
                 <div class="logo">
-                    <span class="logo-icon">📚</span>
-                    <span class="logo-text">LearnHub</span>
+                    <span class="logo-icon">🕵️</span>
+                    <span class="logo-text">DETECTIVE ACADEMY</span>
                 </div>
-                <div class="header-actions">
-                    <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">
-                        <span class="theme-icon">🌙</span>
-                        <span class="theme-text">Тёмная</span>
-                    </button>
-                </div>
+                <button id="theme-toggle" class="theme-toggle">
+                    <span class="theme-icon">◐</span>
+                    <span class="theme-text">НА СВЕТ</span>
+                </button>
             </div>
         </header>
 
-        <!-- Learning Path Tree -->
+        <!-- Learning Path Tree (Vertical) -->
         <section class="learning-path-section">
-            <h2 class="section-title">📍 Путь обучения</h2>
+            <h2 class="section-title">/// ПУТЬ ОБУЧЕНИЯ</h2>
             <div class="learning-tree">
-                <div class="tree-node completed">
-                    <div class="node-circle">✓</div>
-                    <div class="node-label">Основы</div>
-                    <div class="node-connector"></div>
+                <div class="tree-node">
+                    <span class="tree-marker">■</span>
+                    <span class="tree-label">Основы детективного дела</span>
+                    <div class="tree-children">
+                        <div class="tree-node">
+                            <span class="tree-marker">▪</span>
+                            <span class="tree-label">Методы наблюдения</span>
+                        </div>
+                        <div class="tree-node">
+                            <span class="tree-marker">▪</span>
+                            <span class="tree-label">Сбор улик</span>
+                        </div>
+                        <div class="tree-node">
+                            <span class="tree-marker">▪</span>
+                            <span class="tree-label">Допрос свидетелей</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="tree-node completed">
-                    <div class="node-circle">✓</div>
-                    <div class="node-label">Present Simple</div>
-                    <div class="node-connector"></div>
+                <div class="tree-node">
+                    <span class="tree-marker">■</span>
+                    <span class="tree-label">Present Perfect</span>
+                    <div class="tree-children">
+                        <div class="tree-node">
+                            <span class="tree-marker">▪</span>
+                            <span class="tree-label">Формула образования</span>
+                        </div>
+                        <div class="tree-node">
+                            <span class="tree-marker">▪</span>
+                            <span class="tree-label">Маркеры времени</span>
+                        </div>
+                        <div class="tree-node">
+                            <span class="tree-marker">▪</span>
+                            <span class="tree-label">Исключения</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="tree-node active">
-                    <div class="node-circle">●</div>
-                    <div class="node-label">Present Perfect</div>
-                    <div class="node-connector"></div>
+                <div class="tree-node">
+                    <span class="tree-marker">□</span>
+                    <span class="tree-label">Past Simple</span>
+                    <div class="tree-children">
+                        <div class="tree-node">
+                            <span class="tree-marker">▪</span>
+                            <span class="tree-label">Правильные глаголы</span>
+                        </div>
+                        <div class="tree-node">
+                            <span class="tree-marker">▪</span>
+                            <span class="tree-label">Неправильные глаголы</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="tree-node locked">
-                    <div class="node-circle">🔒</div>
-                    <div class="node-label">Past Simple</div>
-                    <div class="node-connector"></div>
-                </div>
-                <div class="tree-node locked">
-                    <div class="node-circle">🔒</div>
-                    <div class="node-label">Future Tenses</div>
+                <div class="tree-node">
+                    <span class="tree-marker">□</span>
+                    <span class="tree-label">Future Tenses</span>
                 </div>
             </div>
         </section>
@@ -60,8 +88,7 @@
         <!-- Topic Group: Present Perfect -->
         <section class="topic-group">
             <div class="topic-header">
-                <h2 class="topic-title">📘 Present Perfect</h2>
-                <span class="topic-progress">Прогресс: 3/8</span>
+                <h2 class="topic-title">📁 ДЕЛО №734: Present Perfect</h2>
             </div>
 
             <!-- Explanation Block -->
@@ -169,18 +196,18 @@
                         <div class="assignment-inputs">
                             <div class="input-row">
                                 <span>a)</span>
-                                <input type="text" class="assignment-input" placeholder="I (finish) ___ my work">
-                                <button class="check-btn" data-answer="have finished">✓</button>
+                                <input type="text" class="assignment-input" data-answer="have finished" placeholder="I (finish) ___ my work">
+                                <button class="check-btn">✓</button>
                             </div>
                             <div class="input-row">
                                 <span>b)</span>
-                                <input type="text" class="assignment-input" placeholder="She (not see) ___ him today">
-                                <button class="check-btn" data-answer="hasn't seen">✓</button>
+                                <input type="text" class="assignment-input" data-answer="hasn't seen" placeholder="She (not see) ___ him today">
+                                <button class="check-btn">✓</button>
                             </div>
                             <div class="input-row">
                                 <span>c)</span>
-                                <input type="text" class="assignment-input" placeholder="(you / be) ___ to London?">
-                                <button class="check-btn" data-answer="Have you been">✓</button>
+                                <input type="text" class="assignment-input" data-answer="Have you been" placeholder="(you / be) ___ to London?">
+                                <button class="check-btn">✓</button>
                             </div>
                         </div>
                     </div>
@@ -212,8 +239,7 @@
         <!-- Topic Group: Past Simple -->
         <section class="topic-group">
             <div class="topic-header">
-                <h2 class="topic-title">📗 Past Simple</h2>
-                <span class="topic-progress">Прогресс: 0/6</span>
+                <h2 class="topic-title">📁 ДЕЛО №735: Past Simple</h2>
             </div>
 
             <!-- Explanation Block -->
@@ -272,8 +298,8 @@
 
         <!-- Footer -->
         <footer class="site-footer">
-            <p>© 2024 LearnHub. Все права защищены.</p>
-            <p class="footer-note">Продолжайте учиться каждый день! 🚀</p>
+            <p>© 2024 DETECTIVE ACADEMY. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</p>
+            <p class="footer-note">■ КОНЕЦ ДОКУМЕНТА ■</p>
         </footer>
 
     </div>

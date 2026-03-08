@@ -51,7 +51,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
+    background:
         radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
     pointer-events: none;
@@ -63,9 +63,18 @@ body::before {
     background: rgba(17, 24, 39, 0.8);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 100;
+    transition: transform 0.3s ease-in-out;
+    /* Добавлена анимация */
+}
+
+/* Класс для скрытия шапки */
+.header.hidden {
+    transform: translateY(-100%);
 }
 
 .header-content {
@@ -84,9 +93,9 @@ body::before {
 }
 
 .logo h1 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
+    font-size: 1.40rem;        /* ≈ 20px при базовом 16px */
+    font-weight: 700;          /* Жирное начертание */
+    letter-spacing: -0.5px;    /* Плотный межбуквенный интервал */
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -94,7 +103,7 @@ body::before {
 }
 
 .logo-tag {
-    font-size: 0.65rem;
+    font-size: 0.80rem;
     color: var(--text-muted);
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -112,21 +121,21 @@ body::before {
 }
 
 .donate-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
+    display: inline-flex;           /* Размер по содержимому */
+    align-items: center;            /* Центрирование по вертикали */
+    justify-content: center;        /* Центрирование по горизонтали */
+    gap: 0.4rem;                    /* Отступ между иконкой и текстом */
     background: var(--accent-gradient);
     color: white;
     border: none;
-    padding: 0.4rem 0.85rem;
-    border-radius: var(--radius-md);
-    font-weight: 600;
-    font-size: 0.75rem;
+    padding: 0.6rem 0.85rem;        /* Внутренние отступы (верх/низ, лево/право) */
+    border-radius: var(--radius-md);/* Закругление углов (12px) */
+    font-weight: 600;               /* Жирность шрифта */
+    font-size: 1rem;                /* Размер шрифта текста */
     cursor: pointer;
     transition: all var(--transition-base);
     box-shadow: var(--shadow-md);
-    white-space: nowrap;
+    white-space: nowrap;            /* Запрет переноса текста */
 }
 
 .donate-btn:hover {
@@ -143,6 +152,7 @@ body::before {
     max-width: 1400px;
     margin: 0 auto;
     padding: 1.5rem;
+    padding-top: 6.5rem; /* Добавлен отступ сверху равный высоте шапки */
     overflow-x: hidden;
 }
 
@@ -171,6 +181,7 @@ body::before {
     gap: 1.5rem;
     width: 100%;
 }
+
 
 /* Topic Layout */
 .topic-layout {
@@ -256,13 +267,15 @@ body::before {
     color: var(--text-primary);
 }
 
-.rule-list, .example-list {
+.rule-list,
+.example-list {
     margin-left: 1.5rem;
     margin-bottom: 1rem;
     color: var(--text-secondary);
 }
 
-.rule-list li, .example-list li {
+.rule-list li,
+.example-list li {
     margin-bottom: 0.5rem;
 }
 
@@ -319,142 +332,126 @@ body::before {
     color: var(--text-secondary);
 }
 
-.grammar-table tr:hover {
-    background: var(--bg-hover);
-}
 
-/* Inline Flashcards - Optimized */
-.inline-flashcard-right {
-    float: right;
-    clear: right;
-    width: 100%;
-    max-width: 140px;
-    height: 60px;
-    perspective: 1000px;
-    cursor: pointer;
-    margin: 0 0 1rem 1rem;
-    background: var(--bg-card-alt);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
-    padding: 0.5rem;
-    position: relative;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.inline-flashcard-right.flipped {
-    transform: rotateY(180deg);
-}
 
-.inline-flashcard-right::before {
-    content: attr(data-front);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backface-visibility: hidden;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    text-align: center;
-    padding: 0.5rem;
-}
 
-.inline-flashcard-right::after {
-    content: attr(data-back);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backface-visibility: hidden;
-    transform: rotateY(180deg);
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    text-align: center;
-    padding: 0.5rem;
-    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-hover) 100%);
-    border-radius: var(--radius-sm);
-}
 
-.content-block::after {
-    content: '';
-    display: table;
-    clear: both;
-}
 
-/* Mini Flashcard Block (3 rows × 4 cards) */
-.mini-flashcard-block {
+/* Mini Flashcards Grid */
+.mini-flashcards-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 0.5rem;
-    margin: 1rem 0;
-    clear: both;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.75rem;
+    width: 100%;
+    margin: 1.5rem 0;
 }
 
+/* Mini Flashcard Container */
 .mini-flashcard {
-    width: 100%;
-    height: 60px;
+    height: 80px;
     perspective: 1000px;
     cursor: pointer;
-    background: var(--bg-card-alt);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
-    padding: 0.5rem;
     position: relative;
+}
+
+/* Mini Flashcard Inner */
+.mini-flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.mini-flashcard.flipped {
+/* Flip State */
+.mini-flashcard.flipped .mini-flashcard-inner {
     transform: rotateY(180deg);
 }
 
-.mini-flashcard::before {
-    content: attr(data-front);
+/* Mini Flashcard Sides */
+.mini-flashcard-front,
+.mini-flashcard-back {
     position: absolute;
     width: 100%;
     height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    backface-visibility: hidden;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    text-align: center;
-    padding: 0.25rem;
+    padding: 0.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-fast);
 }
 
-.mini-flashcard::after {
-    content: attr(data-back);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backface-visibility: hidden;
+/* Hover Effect */
+.mini-flashcard:hover .mini-flashcard-front,
+.mini-flashcard:hover .mini-flashcard-back {
+    border-color: var(--border-light);
+    box-shadow: var(--shadow-md);
+}
+
+/* Back Side */
+.mini-flashcard-back {
     transform: rotateY(180deg);
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    text-align: center;
-    padding: 0.25rem;
     background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-hover) 100%);
-    border-radius: var(--radius-sm);
 }
+
+/* Mini Card Text */
+.mini-card-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .mini-flashcards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mini-flashcard {
+        height: 70px;
+    }
+
+    .mini-card-text {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .mini-flashcards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .mini-flashcard {
+        height: 60px;
+    }
+
+    .mini-card-text {
+        font-size: 0.7rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Main Flash Cards */
 .flashcard {
@@ -490,7 +487,7 @@ body::before {
     justify-content: center;
     padding: 1.5rem;
     box-shadow: var(--shadow-md);
-    transition: all var(--transition-base);
+
 }
 
 .flashcard:hover .flashcard-front,
@@ -635,9 +632,19 @@ body::before {
 }
 
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
 }
 
 .show-answer-btn {
@@ -684,6 +691,7 @@ body::before {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -937,6 +945,7 @@ body::before {
         opacity: 0;
         transform: translateY(-20px) scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -970,11 +979,6 @@ body::before {
     margin-bottom: 2rem;
 }
 
-.modal-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
 .modal-header h2 {
     font-size: 1.75rem;
     font-weight: 700;
@@ -996,7 +1000,7 @@ body::before {
 
 .donate-option {
     position: relative;
-    padding: 1.5rem;
+    padding: 1rem;
     background: var(--bg-secondary);
     border: 2px solid var(--border-color);
     border-radius: var(--radius-md);
@@ -1041,16 +1045,7 @@ body::before {
     font-size: 0.875rem;
 }
 
-.donate-footer {
-    text-align: center;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border-color);
-}
 
-.donate-footer p {
-    color: var(--text-secondary);
-    margin-bottom: 0.5rem;
-}
 
 .donate-note {
     font-size: 0.8rem;
@@ -1062,11 +1057,11 @@ body::before {
     .topic-layout {
         grid-template-columns: 1fr;
     }
-    
+
     .materials-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .footer-content {
         grid-template-columns: 1fr;
     }
@@ -1083,105 +1078,80 @@ body::before {
         padding: 0.5rem 1rem;
         gap: 0.5rem;
     }
-    
+
     .logo h1 {
         font-size: 1rem;
     }
-    
+
     .logo-tag {
         font-size: 0.6rem;
     }
-    
+
     .development-notice {
         font-size: 0.6rem;
     }
-    
+
     .donate-btn {
-        padding: 0.35rem 0.7rem;
-        font-size: 0.7rem;
+        padding: 0.50rem 0.7rem;
+        font-size: 0.8rem;
     }
-    
+
     .donate-btn svg {
         width: 14px;
         height: 14px;
     }
-    
+
     .main-content {
         padding: 1rem;
+        padding-top: 6rem; /* Добавлен отступ сверху равный высоте шапки */
     }
-    
+
     .flashcards-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .materials-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .flashcard {
         height: 180px;
     }
-    
-    .inline-flashcard-right {
-        float: none;
-        width: 100%;
-        max-width: 100%;
-        margin: 1rem 0;
-    }
-    
-    .mini-flashcard-block {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-    }
-    
-    .mini-flashcard {
-        height: 50px;
-    }
-    
-    .mini-flashcard::before,
-    .mini-flashcard::after {
-        font-size: 0.7rem;
-        padding: 0.2rem;
-    }
-    
-    .inline-flashcard-right::before,
-    .inline-flashcard-right::after {
-        font-size: 0.75rem;
-        padding: 0.4rem;
-    }
-    
+
+
     .grammar-table {
         font-size: 0.75rem;
         overflow-x: auto;
         display: block;
     }
-    
+
     .grammar-table th,
     .grammar-table td {
         padding: 0.5rem;
     }
-    
+
     .input-exercise {
         flex-direction: row;
         flex-wrap: wrap;
     }
-    
+
     .check-btn {
         width: 40px;
         height: 40px;
         order: 0;
     }
-    
+
     .answer-input {
         min-width: 150px;
         flex: 1;
     }
-    
+
     .show-answer-btn {
         margin-top: 0;
     }
-    
+
     .donate-options {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); /* 2 кнопки в ряд */
+        gap: 0.75rem; /* Уменьшенный отступ для мобильных */
     }
 }

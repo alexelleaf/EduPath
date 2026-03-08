@@ -16,8 +16,9 @@
                 <h1>EDUPATH</h1>
                 <span class="logo-tag">Knowledge Base</span>
             </div>
+            <div class="development-notice">Сайт в разработке</div>
             <button class="donate-btn" onclick="showDonateModal()">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                 </svg>
                 Поддержать
@@ -25,52 +26,14 @@
         </div>
     </header>
 
-    <nav class="nav-container">
-        <div class="nav-wrapper">
-            <ul class="tree-nav">
-                <li>
-                    <a href="#topic1" class="nav-link">
-                        <span class="nav-icon">📚</span>
-                        <span>Present Tenses</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="#subtopic1-1" class="nav-link">Present Simple</a>
-                            <ul>
-                                <li><a href="#subtopic1-1-1" class="nav-link">Usage & Rules</a></li>
-                                <li><a href="#detail1-1-1-1" class="nav-link">Habits</a></li>
-                                <li><a href="#detail1-1-1-2" class="nav-link">Facts</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#topic2" class="nav-link">
-                        <span class="nav-icon">📖</span>
-                        <span>Past Tenses</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="#subtopic2-1" class="nav-link">Past Simple</a>
-                            <ul>
-                                <li><a href="#subtopic2-1-1" class="nav-link">Regular Verbs</a></li>
-                                <li><a href="#detail2-1-1-1" class="nav-link">Formation</a></li>
-                                <li><a href="#detail2-1-1-2" class="nav-link">Spelling Rules</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
     <main class="main-content">
+        <!-- Main Flashcards Section -->
         <section class="content-section">
             <h2 class="section-title">
                 <span class="title-icon">🎴</span>
                 Флеш-карточки
             </h2>
-            <div class="blocks-container grid-cards">
+            <div class="flashcards-grid">
                 <div class="flashcard" onclick="flipCard(this)">
                     <div class="flashcard-inner">
                         <div class="flashcard-front">
@@ -130,147 +93,256 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="flashcard" onclick="flipCard(this)">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">
-                            <div class="card-label">EN</div>
-                            <span class="card-text">Achievement</span>
-                            <div class="card-flip-hint">Click to flip</div>
-                        </div>
-                        <div class="flashcard-back">
-                            <div class="card-label">RU</div>
-                            <span class="card-text">Достижение</span>
-                            <div class="card-flip-hint">Click to flip</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flashcard" onclick="flipCard(this)">
-                    <div class="flashcard-inner">
-                        <div class="flashcard-front">
-                            <div class="card-label">EN</div>
-                            <span class="card-text">To improve</span>
-                            <div class="card-flip-hint">Click to flip</div>
-                        </div>
-                        <div class="flashcard-back">
-                            <div class="card-label">RU</div>
-                            <span class="card-text">Улучшать</span>
-                            <div class="card-flip-hint">Click to flip</div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
+        <!-- Grammar Topics with Integrated Exercises -->
         <section class="content-section">
             <h2 class="section-title">
-                <span class="title-icon">✍️</span>
-                Упражнения
+                <span class="title-icon">📖</span>
+                Правила грамматики
             </h2>
-            <div class="blocks-container grid-exercises">
-                <div class="exercise-block">
-                    <h3 class="exercise-title">Present Perfect</h3>
-                    <div class="exercise-subtitle">Раскройте скобки</div>
-                    
-                    <div class="exercise-item">
-                        <div class="exercise-question">1. She _____ (finish) her homework already.</div>
-                        <div class="input-exercise">
-                            <button class="check-btn" onclick="checkTextAnswer(this, ['has finished'])">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                            </button>
-                            <input type="text" class="answer-input" placeholder="Type your answer">
-                            <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Show answer</button>
-                        </div>
-                        <div class="correct-answer">✓ has finished</div>
-                    </div>
 
-                    <div class="exercise-item">
-                        <div class="exercise-question">2. They _____ (visit) London three times.</div>
-                        <div class="input-exercise">
-                            <button class="check-btn" onclick="checkTextAnswer(this, ['have visited'])">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                            </button>
-                            <input type="text" class="answer-input" placeholder="Type your answer">
-                            <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Show answer</button>
-                        </div>
-                        <div class="correct-answer">✓ have visited</div>
-                    </div>
+            <!-- Topic 1: Present Perfect -->
+            <div class="topic-layout">
+                <div class="topic-content">
+                    <div class="content-block">
+                        <div class="block-icon">📋</div>
+                        <h3>Present Perfect</h3>
+                        <p><strong>Formation:</strong> have/has + past participle (V3)</p>
+                        
+                        <table class="grammar-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Auxiliary</th>
+                                    <th>Past Participle</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>I / You / We / They</td>
+                                    <td>have</td>
+                                    <td>visited</td>
+                                    <td>I have visited Paris</td>
+                                </tr>
+                                <tr>
+                                    <td>He / She / It</td>
+                                    <td>has</td>
+                                    <td>finished</td>
+                                    <td>She has finished work</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                    <div class="exercise-item">
-                        <div class="exercise-question">3. I _____ (never/see) such a beautiful sunset.</div>
-                        <div class="input-exercise">
-                            <button class="check-btn" onclick="checkTextAnswer(this, ['have never seen', 've never seen'])">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                </svg>
-                            </button>
-                            <input type="text" class="answer-input" placeholder="Type your answer">
-                            <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Show answer</button>
+                        <p><strong>Usage:</strong></p>
+                        <ul class="rule-list">
+                            <li>Actions that happened at an unspecified time in the past</li>
+                            <li>Actions that started in the past and continue to the present</li>
+                            <li>Life experiences (with ever/never)</li>
+                            <li>Recent actions with present results (with just/already/yet)</li>
+                        </ul>
+
+                        <div class="inline-flashcard inline-flashcard-right" onclick="flipCard(this)" data-front="Unspecified" data-back="Неуказанный"></div>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul class="example-list">
+                            <li>I have visited Paris three times.</li>
+                            <li>She has lived here for 5 years.</li>
+                            <li>Have you ever tried sushi?</li>
+                            <li>They have just finished their homework.</li>
+                        </ul>
+
+                        <!-- Mini Flashcard Block (3 rows × 4 cards) -->
+                        <div class="mini-flashcard-block">
+                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Ever" data-back="Когда-либо"></div>
+                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Never" data-back="Никогда"></div>
+                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Just" data-back="Только что"></div>
+                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Already" data-back="Уже"></div>
+                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Yet" data-back="Ещё/Уже"></div>
+                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Since" data-back="С (времени)"></div>
+                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="For" data-back="В течение"></div>
+                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Been" data-back="Был/Была"></div>
+                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Gone" data-back="Ушёл/Ушла"></div>
+                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Done" data-back="Сделал/Сделала"></div>
+                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Seen" data-back="Видел/Видела"></div>
+                            <div class="mini-flashcard" onclick="flipCard(this)" data-front="Had" data-back="Имел/Имела"></div>
                         </div>
-                        <div class="correct-answer">✓ have never seen</div>
+
+                        <div class="exercise-item">
+                            <div class="exercise-question">1. She _____ (finish) her homework already.</div>
+                            <div class="input-exercise">
+                                <button class="check-btn" onclick="checkTextAnswer(this, ['has finished'])">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </button>
+                                <input type="text" class="answer-input" placeholder="Type your answer">
+                                <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Show answer</button>
+                            </div>
+                            <div class="correct-answer">✓ has finished</div>
+                        </div>
+
+                        <div class="exercise-item">
+                            <div class="exercise-question">2. They _____ (visit) London three times.</div>
+                            <div class="input-exercise">
+                                <button class="check-btn" onclick="checkTextAnswer(this, ['have visited'])">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </button>
+                                <input type="text" class="answer-input" placeholder="Type your answer">
+                                <button class="show-answer-btn" onclick="showCorrectAnswer(this)">Show answer</button>
+                            </div>
+                            <div class="correct-answer">✓ have visited</div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="exercise-block">
-                    <h3 class="exercise-title">Multiple Choice</h3>
-                    <div class="exercise-subtitle">Выберите правильный вариант</div>
-                    
-                    <div class="exercise-item">
-                        <div class="exercise-question">1. Choose the correct form:</div>
-                        <div class="multiple-choice-options">
-                            <div class="choice-option" onclick="selectOption(this)" data-correct="false">
-                                <span class="option-marker">A</span>
-                                <span class="option-text">I have went to Paris</span>
-                            </div>
-                            <div class="choice-option" onclick="selectOption(this)" data-correct="true">
-                                <span class="option-marker">B</span>
-                                <span class="option-text">I have gone to Paris</span>
-                            </div>
-                            <div class="choice-option" onclick="selectOption(this)" data-correct="false">
-                                <span class="option-marker">C</span>
-                                <span class="option-text">I have go to Paris</span>
-                            </div>
+                <!-- Examples Block -->
+                <div class="examples-block">
+                    <h3 class="exercise-title">Примеры использования</h3>
+                    <div class="exercise-subtitle">Практическое применение правила</div>
+
+                    <div class="example-subblock">
+                        <h4>Подтема 1.1: Завершённые действия</h4>
+                        <p>Используется для действий, которые произошли в прошлом, но результат важен сейчас.</p>
+                        <div class="example-sentence">
+                            <span class="example-en">I have completed the project.</span>
+                            <span class="example-ru">Я завершил проект.</span>
                         </div>
-                        <button class="validate-btn" onclick="validateMultipleChoice(this)">Check Answer</button>
                     </div>
 
-                    <div class="exercise-item">
-                        <div class="exercise-question">2. Which sentence is correct?</div>
-                        <div class="multiple-choice-options">
-                            <div class="choice-option" onclick="selectOption(this)" data-correct="true">
-                                <span class="option-marker">A</span>
-                                <span class="option-text">She has lived here for 5 years</span>
-                            </div>
-                            <div class="choice-option" onclick="selectOption(this)" data-correct="false">
-                                <span class="option-marker">B</span>
-                                <span class="option-text">She has live here for 5 years</span>
-                            </div>
-                            <div class="choice-option" onclick="selectOption(this)" data-correct="false">
-                                <span class="option-marker">C</span>
-                                <span class="option-text">She have lived here for 5 years</span>
-                            </div>
+                    <div class="example-divider"></div>
+
+                    <div class="example-subblock">
+                        <h4>Подтема 1.2: Действия с продолжением</h4>
+                        <p>Описывает действия, которые начались в прошлом и продолжаются до настоящего момента.</p>
+                        <div class="example-sentence">
+                            <span class="example-en">She has worked here since 2020.</span>
+                            <span class="example-ru">Она работает здесь с 2020 года.</span>
                         </div>
-                        <button class="validate-btn" onclick="validateMultipleChoice(this)">Check Answer</button>
+                    </div>
+
+                    <div class="example-divider"></div>
+
+                    <div class="example-subblock">
+                        <h4>Подтема 1.3: Жизненный опыт</h4>
+                        <p>Говорим о опыте без указания конкретного времени.</p>
+                        <div class="example-sentence">
+                            <span class="example-en">Have you ever been to Japan?</span>
+                            <span class="example-ru">Вы когда-нибудь были в Японии?</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic 2: Present Simple -->
+            <div class="topic-layout">
+                <div class="topic-content">
+                    <div class="content-block">
+                        <div class="block-icon">⏰</div>
+                        <h3>Present Simple</h3>
+                        <p><strong>Formation:</strong> base form (add -s/-es for he/she/it)</p>
+
+                        <table class="grammar-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Verb Form</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>I / You / We / They</td>
+                                    <td>work</td>
+                                    <td>They work every day</td>
+                                </tr>
+                                <tr>
+                                    <td>He / She / It</td>
+                                    <td>works</td>
+                                    <td>She works every day</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p><strong>Usage:</strong></p>
+                        <ul class="rule-list">
+                            <li>Habits and routines</li>
+                            <li>General truths and facts</li>
+                        </ul>
+
+                        <div class="inline-flashcard inline-flashcard-right" onclick="flipCard(this)" data-front="Habit" data-back="Привычка"></div>
+
+                        <p><strong>Examples:</strong></p>
+                        <ul class="example-list">
+                            <li>I work in an office.</li>
+                            <li>She drinks coffee every morning.</li>
+                        </ul>
+
+                        <div class="exercise-item">
+                            <div class="exercise-question">1. Choose the correct form:</div>
+                            <div class="multiple-choice-options">
+                                <div class="choice-option" onclick="selectOption(this)" data-correct="false" data-explanation="Incorrect: 'She' is third person singular, which requires the verb to end in -s.">
+                                    <span class="option-marker">A</span>
+                                    <span class="option-text">She drink coffee every morning</span>
+                                </div>
+                                <div class="choice-option" onclick="selectOption(this)" data-correct="true" data-explanation="Correct! In Present Simple, third person singular requires adding -s to the base verb.">
+                                    <span class="option-marker">B</span>
+                                    <span class="option-text">She drinks coffee every morning</span>
+                                </div>
+                                <div class="choice-option" onclick="selectOption(this)" data-correct="false" data-explanation="Incorrect: 'Drinking' is present participle, not Present Simple.">
+                                    <span class="option-marker">C</span>
+                                    <span class="option-text">She drinking coffee every morning</span>
+                                </div>
+                            </div>
+                            <button class="validate-btn" onclick="validateMultipleChoice(this)">Check Answer</button>
+                            <div class="explanation-text" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Examples Block -->
+                <div class="examples-block">
+                    <h3 class="exercise-title">Примеры использования</h3>
+                    <div class="exercise-subtitle">Практическое применение правила</div>
+
+                    <div class="example-subblock">
+                        <h4>Подтема 2.1: Привычки</h4>
+                        <p>Описывает регулярные действия и рутины.</p>
+                        <div class="example-sentence">
+                            <span class="example-en">I usually wake up at 7 AM.</span>
+                            <span class="example-ru">Я обычно просыпаюсь в 7 утра.</span>
+                        </div>
+                    </div>
+
+                    <div class="example-divider"></div>
+
+                    <div class="example-subblock">
+                        <h4>Подтема 2.2: Общие истины</h4>
+                        <p>Используется для фактов, которые всегда верны.</p>
+                        <div class="example-sentence">
+                            <span class="example-en">The sun rises in the east.</span>
+                            <span class="example-ru">Солнце встаёт на востоке.</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Materials Section -->
         <section class="content-section">
             <h2 class="section-title">
                 <span class="title-icon">📂</span>
                 Материалы
             </h2>
-            <div class="blocks-container grid-materials">
+            <div class="materials-grid">
                 <div class="content-block">
                     <div class="block-icon">📋</div>
                     <h3>Grammar Rules</h3>
-                    <p>Detailed explanations of grammar rules with usage examples. Includes tenses, articles, prepositions and more.</p>
+                    <p>Detailed explanations of grammar rules with usage examples.</p>
                     <div class="block-footer">
                         <span class="block-tag">Theory</span>
                         <span class="block-count">24 topics</span>
@@ -280,7 +352,7 @@
                 <div class="content-block">
                     <div class="block-icon">📖</div>
                     <h3>Vocabulary</h3>
-                    <p>Essential vocabulary for daily life, travel, work, and education. Organized by themes and difficulty levels.</p>
+                    <p>Essential vocabulary for daily life, travel, work, and education.</p>
                     <div class="block-footer">
                         <span class="block-tag">Words</span>
                         <span class="block-count">500+ words</span>
@@ -290,7 +362,7 @@
                 <div class="content-block">
                     <div class="block-icon">✏️</div>
                     <h3>Practice Tests</h3>
-                    <p>Interactive exercises to reinforce learning: translations, quizzes, listening and writing tasks.</p>
+                    <p>Interactive exercises to reinforce learning.</p>
                     <div class="block-footer">
                         <span class="block-tag">Practice</span>
                         <span class="block-count">150+ tests</span>
@@ -300,7 +372,7 @@
                 <div class="content-block">
                     <div class="block-icon">🎯</div>
                     <h3>Resources</h3>
-                    <p>Links to useful materials, video lessons, podcasts and interactive exercises for self-study.</p>
+                    <p>Links to useful materials, video lessons, podcasts.</p>
                     <div class="block-footer">
                         <span class="block-tag">Extra</span>
                         <span class="block-count">50+ links</span>
@@ -309,6 +381,43 @@
             </div>
         </section>
     </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Authors</h4>
+                <div class="author-links">
+                    <a href="https://github.com" target="_blank" class="author-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://t.me" target="_blank" class="author-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                        <span>Telegram</span>
+                    </a>
+                    <a href="mailto:contact@edupath.com" class="author-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>Email</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Project</h4>
+                <p>EduPath is an open-source educational platform designed to make learning accessible and effective.</p>
+            </div>
+            <div class="footer-section">
+                <h4>License</h4>
+                <p>© 2025 EduPath. All rights reserved.<br>MIT License</p>
+            </div>
+        </div>
+    </footer>
 
     <div id="donateModal" class="modal">
         <div class="modal-backdrop" onclick="closeDonateModal()"></div>

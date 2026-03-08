@@ -1,54 +1,49 @@
 /* =============================================================================
-LEARNHUB — EDUCATIONAL PLATFORM STYLES
+DETECTIVE ACADEMY — NOIR EDUCATIONAL PLATFORM
 ============================================================================= */
 
-/* -----------------------------------------------------------------------------
-   CSS VARIABLES (THEMES)
-   ----------------------------------------------------------------------------- */
 :root {
-    /* LIGHT THEME (DEFAULT) */
-    --color-bg-primary: #f8fafc;
-    --color-bg-secondary: #ffffff;
-    --color-bg-tertiary: #f1f5f9;
-    --color-text-primary: #1e293b;
-    --color-text-secondary: #475569;
-    --color-text-muted: #94a3b8;
-    --color-border: #e2e8f0;
-    --color-border-hover: #cbd5e1;
-    --color-accent: #3b82f6;
-    --color-accent-hover: #2563eb;
-    --color-success: #22c55e;
-    --color-warning: #f59e0b;
-    --color-error: #ef4444;
-    --color-card-shadow: rgba(0, 0, 0, 0.08);
-    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 16px;
+    /* DARK THEME (DEFAULT) */
+    --color-bg: #0a0a0a;
+    --color-bg-secondary: #141414;
+    --color-bg-tertiary: #1a1a1a;
+    --color-text: #d0d0d0;
+    --color-text-muted: #888888;
+    --color-text-secondary: #666666;
+    --color-border: #333333;
+    --color-border-hover: #555555;
+    --color-accent: #c9a959;
+    --color-accent-hover: #e0c070;
+    --color-success: #4a7c4e;
+    --color-error: #8b3a3a;
+    --color-highlight: #ffffff;
+    --font-main: 'IBM Plex Mono', monospace;
+    --max-width-block: 500px;
+    --max-width-group: 900px;
     --spacing-xs: 8px;
     --spacing-sm: 12px;
     --spacing-md: 20px;
     --spacing-lg: 32px;
-    --spacing-xl: 48px;
+    --radius-sm: 4px;
+    --radius-md: 6px;
 }
 
-body.dark-theme {
-    --color-bg-primary: #0f172a;
-    --color-bg-secondary: #1e293b;
-    --color-bg-tertiary: #334155;
-    --color-text-primary: #f1f5f9;
-    --color-text-secondary: #cbd5e1;
-    --color-text-muted: #64748b;
-    --color-border: #334155;
-    --color-border-hover: #475569;
-    --color-accent: #60a5fa;
-    --color-accent-hover: #3b82f6;
-    --color-card-shadow: rgba(0, 0, 0, 0.3);
+body.light-theme {
+    --color-bg: #f5f5f0;
+    --color-bg-secondary: #ffffff;
+    --color-bg-tertiary: #e8e8e3;
+    --color-text: #1a1a1a;
+    --color-text-muted: #666666;
+    --color-text-secondary: #888888;
+    --color-border: #cccccc;
+    --color-border-hover: #999999;
+    --color-accent: #8b7355;
+    --color-accent-hover: #6b5745;
+    --color-success: #5a9c5e;
+    --color-error: #b94a4a;
+    --color-highlight: #000000;
 }
 
-/* -----------------------------------------------------------------------------
-   RESET & BASE
-   ----------------------------------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -56,37 +51,37 @@ body.dark-theme {
 }
 
 body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
     font-family: var(--font-main);
-    background-color: var(--color-bg-primary);
-    color: var(--color-text-primary);
-    line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 14px;
+    line-height: 1.7;
+    padding: var(--spacing-md);
+    transition: background-color 0.4s ease, color 0.4s ease;
+    letter-spacing: 0.3px;
 }
 
 .page-container {
-    max-width: 1400px;
+    max-width: var(--max-width-group);
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding-bottom: var(--spacing-lg);
 }
 
-/* -----------------------------------------------------------------------------
-   HEADER
-   ----------------------------------------------------------------------------- */
+/* =============================================================================
+HEADER
+============================================================================= */
 .site-header {
     background-color: var(--color-bg-secondary);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 2px solid var(--color-border);
     padding: var(--spacing-md) 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px var(--color-card-shadow);
+    margin-bottom: var(--spacing-lg);
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1400px;
+    max-width: var(--max-width-group);
     margin: 0 auto;
     padding: 0 var(--spacing-md);
 }
@@ -98,201 +93,179 @@ body {
 }
 
 .logo-icon {
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .logo-text {
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 600;
     color: var(--color-accent);
+    letter-spacing: 2px;
 }
 
 .theme-toggle {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
-    background-color: var(--color-bg-tertiary);
+    background-color: transparent;
     border: 1px solid var(--color-border);
-    color: var(--color-text-primary);
+    color: var(--color-text-muted);
     padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: var(--radius-md);
     cursor: pointer;
-    font-size: 14px;
-    transition: all 0.2s ease;
+    font-family: var(--font-main);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
 }
 
 .theme-toggle:hover {
-    background-color: var(--color-border);
-    border-color: var(--color-border-hover);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
 }
 
 .theme-icon {
-    font-size: 16px;
+    font-size: 14px;
 }
 
-/* -----------------------------------------------------------------------------
-   LEARNING PATH TREE
-   ----------------------------------------------------------------------------- */
-.learning-path-section {
-    padding: var(--spacing-xl) 0;
-}
-
+/* =============================================================================
+SECTION TITLES
+============================================================================= */
 .section-title {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--color-text-primary);
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 2px;
+    padding-left: var(--spacing-sm);
+    border-left: 3px solid var(--color-accent);
+}
+
+/* =============================================================================
+LEARNING TREE (VERTICAL)
+============================================================================= */
+.learning-path-section {
     margin-bottom: var(--spacing-lg);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
 }
 
 .learning-tree {
     display: flex;
-    align-items: center;
-    gap: 0;
-    flex-wrap: wrap;
-    padding: var(--spacing-md);
-    background-color: var(--color-bg-secondary);
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--color-border);
-    overflow-x: auto;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding-left: var(--spacing-md);
 }
 
 .tree-node {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    position: relative;
-    min-width: 100px;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) 0;
 }
 
-.node-circle {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.tree-node.completed .node-circle {
-    background-color: var(--color-success);
-    color: white;
-}
-
-.tree-node.active .node-circle {
-    background-color: var(--color-accent);
-    color: white;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
-}
-
-.tree-node.locked .node-circle {
-    background-color: var(--color-bg-tertiary);
-    color: var(--color-text-muted);
-}
-
-.node-label {
+.tree-marker {
+    color: var(--color-accent);
     font-size: 12px;
-    color: var(--color-text-secondary);
-    margin-top: var(--spacing-xs);
-    text-align: center;
+    min-width: 16px;
 }
 
-.node-connector {
-    position: absolute;
-    top: 24px;
-    left: 60px;
-    width: 40px;
-    height: 2px;
-    background-color: var(--color-border);
+.tree-label {
+    font-size: 13px;
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.tree-node:last-child .node-connector {
-    display: none;
+.tree-children {
+    padding-left: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    border-left: 1px solid var(--color-border);
+    margin-left: 7px;
 }
 
-/* -----------------------------------------------------------------------------
-   TOPIC GROUPS
-   ----------------------------------------------------------------------------- */
+.tree-children .tree-marker {
+    color: var(--color-text-muted);
+    font-size: 10px;
+}
+
+.tree-children .tree-label {
+    font-size: 12px;
+    text-transform: none;
+    letter-spacing: 0.5px;
+}
+
+/* =============================================================================
+TOPIC GROUPS
+============================================================================= */
 .topic-group {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
 }
 
 .topic-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: var(--spacing-md);
     padding-bottom: var(--spacing-sm);
-    border-bottom: 2px solid var(--color-accent);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .topic-title {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--color-text-primary);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text);
+    letter-spacing: 1px;
 }
 
-.topic-progress {
-    font-size: 14px;
-    color: var(--color-text-secondary);
-    background-color: var(--color-bg-tertiary);
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: var(--radius-sm);
-}
-
-/* -----------------------------------------------------------------------------
-   BLOCKS (Common Styles)
-   ----------------------------------------------------------------------------- */
+/* =============================================================================
+BLOCKS (Common)
+============================================================================= */
 .block {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-bg-tertiary);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
     margin-bottom: var(--spacing-md);
-    overflow: hidden;
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-.block:hover {
-    box-shadow: 0 4px 20px var(--color-card-shadow);
+    max-width: var(--max-width-block);
 }
 
 .block-header {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    padding: var(--spacing-md);
-    background-color: var(--color-bg-tertiary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: rgba(128, 128, 128, 0.05);
     border-bottom: 1px solid var(--color-border);
 }
 
 .block-icon {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .block-title {
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 600;
-    color: var(--color-text-primary);
+    color: var(--color-text);
     flex: 1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .block-subtitle {
-    font-size: 12px;
+    font-size: 10px;
     color: var(--color-text-muted);
+    text-transform: uppercase;
 }
 
 .block-content {
     padding: var(--spacing-md);
 }
 
-/* -----------------------------------------------------------------------------
-   EXPLANATION BLOCK
-   ----------------------------------------------------------------------------- */
+/* =============================================================================
+EXPLANATION BLOCK
+============================================================================= */
 .explanation-block .rule-list {
     list-style: none;
     margin: var(--spacing-md) 0;
@@ -302,7 +275,8 @@ body {
     padding: var(--spacing-xs) 0;
     padding-left: var(--spacing-md);
     position: relative;
-    color: var(--color-text-secondary);
+    color: var(--color-text-muted);
+    font-size: 13px;
 }
 
 .explanation-block .rule-list li::before {
@@ -310,80 +284,74 @@ body {
     position: absolute;
     left: 0;
     color: var(--color-accent);
-    font-weight: bold;
 }
 
 .formula-box {
-    background-color: var(--color-bg-tertiary);
+    background-color: var(--color-bg);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
     padding: var(--spacing-md);
     margin: var(--spacing-md) 0;
     text-align: center;
 }
 
 .formula-box code {
-    font-family: 'Courier New', monospace;
-    font-size: 16px;
+    font-family: var(--font-main);
+    font-size: 14px;
     color: var(--color-accent);
-    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .examples-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-md);
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
     margin-top: var(--spacing-md);
 }
 
 .example-item {
-    padding: var(--spacing-md);
-    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
     border: 1px solid var(--color-border);
+    background-color: var(--color-bg);
 }
 
 .example-item.positive {
-    background-color: rgba(34, 197, 94, 0.1);
-    border-color: rgba(34, 197, 94, 0.3);
+    border-left: 3px solid var(--color-success);
 }
 
 .example-item.negative {
-    background-color: rgba(239, 68, 68, 0.1);
-    border-color: rgba(239, 68, 68, 0.3);
+    border-left: 3px solid var(--color-error);
 }
 
 .example-item.question {
-    background-color: rgba(59, 130, 246, 0.1);
-    border-color: rgba(59, 130, 246, 0.3);
+    border-left: 3px solid var(--color-accent);
 }
 
 .example-label {
     display: block;
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 9px;
     text-transform: uppercase;
     margin-bottom: var(--spacing-xs);
     color: var(--color-text-muted);
 }
 
 .example-item p {
-    font-size: 14px;
-    color: var(--color-text-primary);
+    font-size: 12px;
+    color: var(--color-text);
 }
 
-/* -----------------------------------------------------------------------------
-   FLASHCARDS BLOCK
-   ----------------------------------------------------------------------------- */
+/* =============================================================================
+FLASHCARDS BLOCK
+============================================================================= */
 .flashcards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: var(--spacing-md);
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--spacing-sm);
     padding: var(--spacing-md);
 }
 
 .flashcard {
     perspective: 1000px;
-    height: 180px;
+    height: 160px;
     cursor: pointer;
 }
 
@@ -405,14 +373,13 @@ body {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: var(--radius-md);
     border: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: var(--spacing-md);
-    background-color: var(--color-bg-secondary);
+    padding: var(--spacing-sm);
+    background-color: var(--color-bg);
 }
 
 .flashcard-back {
@@ -422,24 +389,25 @@ body {
 }
 
 .card-label {
-    font-size: 11px;
+    font-size: 9px;
     text-transform: uppercase;
     color: var(--color-text-muted);
     margin-bottom: var(--spacing-xs);
+    letter-spacing: 1px;
 }
 
 .card-content {
-    font-size: 14px;
-    color: var(--color-text-primary);
+    font-size: 12px;
+    color: var(--color-text);
     text-align: center;
     font-weight: 500;
 }
 
-/* -----------------------------------------------------------------------------
-   ASSIGNMENT BLOCK
-   ----------------------------------------------------------------------------- */
+/* =============================================================================
+ASSIGNMENT BLOCK
+============================================================================= */
 .assignment-item {
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
     padding-bottom: var(--spacing-md);
     border-bottom: 1px solid var(--color-border);
 }
@@ -451,200 +419,194 @@ body {
 }
 
 .assignment-question {
-    font-size: 15px;
-    color: var(--color-text-primary);
-    margin-bottom: var(--spacing-md);
+    font-size: 13px;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
 }
 
 .assignment-inputs {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
 }
 
 .input-row {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
 }
 
 .input-row span {
     font-weight: 600;
-    color: var(--color-text-secondary);
-    min-width: 24px;
+    color: var(--color-text-muted);
+    min-width: 20px;
+    font-size: 12px;
 }
 
 .assignment-input {
     flex: 1;
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-sm);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    background-color: var(--color-bg-primary);
-    color: var(--color-text-primary);
-    font-size: 14px;
+    background-color: var(--color-bg);
+    color: var(--color-text);
     font-family: var(--font-main);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-size: 12px;
+    transition: border-color 0.2s ease;
 }
 
 .assignment-input:focus {
     outline: none;
     border-color: var(--color-accent);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .assignment-input.correct {
     border-color: var(--color-success);
-    background-color: rgba(34, 197, 94, 0.1);
+    background-color: rgba(74, 124, 78, 0.1);
 }
 
 .assignment-input.incorrect {
     border-color: var(--color-error);
-    background-color: rgba(239, 68, 68, 0.1);
+    background-color: rgba(139, 58, 58, 0.1);
 }
 
 .check-btn {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    background-color: var(--color-bg-tertiary);
-    color: var(--color-text-secondary);
+    background-color: var(--color-bg);
+    color: var(--color-text-muted);
     cursor: pointer;
-    font-size: 16px;
+    font-family: var(--font-main);
+    font-size: 14px;
     transition: all 0.2s ease;
 }
 
 .check-btn:hover {
-    background-color: var(--color-accent);
     border-color: var(--color-accent);
-    color: white;
+    color: var(--color-accent);
 }
 
 .check-btn.checked-correct {
     background-color: var(--color-success);
     border-color: var(--color-success);
-    color: white;
+    color: var(--color-highlight);
 }
 
 .check-btn.checked-incorrect {
     background-color: var(--color-error);
     border-color: var(--color-error);
-    color: white;
+    color: var(--color-highlight);
 }
 
 .multiple-choice {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
 }
 
 .choice-item {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm) var(--spacing-md);
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .choice-item:hover {
-    background-color: var(--color-bg-tertiary);
+    background-color: var(--color-bg);
     border-color: var(--color-border-hover);
 }
 
 .choice-item input[type="radio"] {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     accent-color: var(--color-accent);
 }
 
 .choice-item span {
-    font-size: 14px;
-    color: var(--color-text-primary);
+    font-size: 12px;
+    color: var(--color-text);
 }
 
 .assignment-feedback {
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-md);
-    border-radius: var(--radius-md);
-    margin-top: var(--spacing-md);
-    font-size: 14px;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+    font-size: 12px;
 }
 
 .assignment-feedback.success {
-    background-color: rgba(34, 197, 94, 0.1);
+    background-color: rgba(74, 124, 78, 0.1);
     border: 1px solid var(--color-success);
     color: var(--color-success);
 }
 
 .assignment-feedback.error {
-    background-color: rgba(239, 68, 68, 0.1);
+    background-color: rgba(139, 58, 58, 0.1);
     border: 1px solid var(--color-error);
     color: var(--color-error);
 }
 
 .feedback-icon {
-    font-size: 18px;
+    font-size: 14px;
 }
 
-/* -----------------------------------------------------------------------------
-   FOOTER
-   ----------------------------------------------------------------------------- */
+/* =============================================================================
+FOOTER
+============================================================================= */
 .site-footer {
     text-align: center;
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
     border-top: 1px solid var(--color-border);
-    margin-top: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
 }
 
 .site-footer p {
-    font-size: 14px;
+    font-size: 11px;
     color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .footer-note {
-    margin-top: var(--spacing-sm);
-    font-size: 16px;
+    margin-top: var(--spacing-xs);
     color: var(--color-text-secondary);
 }
 
-/* -----------------------------------------------------------------------------
-   RESPONSIVE
-   ----------------------------------------------------------------------------- */
+/* =============================================================================
+RESPONSIVE
+============================================================================= */
 @media (max-width: 768px) {
+    body {
+        padding: var(--spacing-sm);
+    }
+
     .page-container {
+        max-width: 100%;
+    }
+
+    .header-content {
         padding: 0 var(--spacing-sm);
     }
 
-    .topic-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-xs);
+    .logo-text {
+        font-size: 16px;
     }
 
-    .learning-tree {
-        justify-content: flex-start;
-    }
-
-    .tree-node {
-        min-width: 80px;
-    }
-
-    .node-connector {
-        width: 20px;
-        left: 50px;
+    .block {
+        max-width: 100%;
     }
 
     .flashcards-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 
-    .examples-grid {
-        grid-template-columns: 1fr;
+    .learning-tree {
+        padding-left: var(--spacing-sm);
     }
 
     .input-row {
@@ -654,17 +616,5 @@ body {
     .assignment-input {
         width: 100%;
         flex: none;
-    }
-}
-
-@media (min-width: 1200px) {
-    .topic-group {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-md);
-    }
-
-    .topic-group > .block {
-        grid-column: span 2;
     }
 }
